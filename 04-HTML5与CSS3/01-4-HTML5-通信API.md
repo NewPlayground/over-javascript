@@ -1,15 +1,17 @@
 ## 一 跨文档通信
-在过去，跨源或者跨窗口之间的通信往往是与服务端进行数据交互来实现的，并且需要借助轮训或者Connect技术来监听消息。  
-H5提供了PostMessages实现安全的跨源通信：
-```javascript
-otherWindow.postMessage(message, targetOrigin, [transfer]);
 
-// otherWindow:其他窗口的引用，比如iframe中的contentWindow属性，执行widnow.open返回的窗口对象。
-//三个参数：
-//message:将要发给其他窗口的数据
-// targetOrigin:通过创窗口的origin属性来指定哪些窗口能接收到消息事件，其值可以是字符“*”（表示无限制）或者一个url
-// transfer:可选参数，是一串和message同时传递的Transferable对象，这些对象的所有权将被转译给消息的接收方，而发送乙方将不再保有所有权
+在过去，跨文档通信（跨源、跨窗口，cross-document messaging）往往是与服务端进行数据交互来实现的，并且需要借助轮询或者Connect技术来监听消息。  
+
+H5提供了 PostMessages()方法 实现安全的跨源通信：
+```js
+// 参数一：消息体
+// 参数二：消息来自哪个域
+// 参数三：可选。是一串和message同时传递的Transferable对象，这些对象的所有权将被转译给消息的接收方，而发送乙方将不再保有所有权
+
+var iframeWindow = document.getElementById("myframe").contentWindow;
+iframeWindow.postMessage("A secret", "http://www.demo.com");
 ```
+
 iframe应用实例：
 ```html
     <button id="btn">点击发送消息给iframe</button>
@@ -32,8 +34,10 @@ iframe接受数据：
         });
     </script>
 ```
+
 ## 二 Ajax2.0新特性
-设置HTTP请求超时时间
+
+设置HTTP请求超时时间：
 ```javascript
 xhr.timeout = 3000;
 xhr.ontimeout = function(e){}
