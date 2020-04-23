@@ -1,22 +1,24 @@
 ## 一 Babel
 
-ES6 React等写法在浏览器中并未得到完全的支持，Babel是这些书写方式的编译器。  
+ES6 React等写法在浏览器中并未得到完全的支持，利用 Babel 工具可以将ES6、React等语法编译为浏览器识别的ES5。
 
 使用步骤：
 ```
 1 项目根目录安装：
     旧版：npm i -D babel-cli babel-core babel-preset-env
     新版：npm i -D @babel/cli @babel/core @babel/preset-env
+
 2 项目根目录创建 .babelrc ,内容如下:
     旧版：{"presets":["env"]}
     新版：{"presets":["@babel/env"]}
-3 编译src目录下所有文件到dist目录下  --out-dir可以简写为 -d
-    ./node_modules/.bin/babel src -d dist
-4 为了简化第3步操作，可以编写npm脚本
-    "build": "babel src --watch -d dist"
+
+3 编译src目录下所有文件到dist目录下  
+    npx babel src -d dist                           // 若npm<5.2，则可以使用 ./node_modules/.bin/babel
 ```
 
-babel-cli只是一个执行babel命令行工具，本身不具备编译功能，编译功能是由插件babel-preset-env 提供的。env是最新的babel编译工具，包含了所有的ES*功能，如果我们不需要这么多的新特性，可以有选择的安装编译插件：
+babel-cli只是一个执行babel命令行工具，本身不具备编译功能，编译功能是由插件babel-preset-env 提供的。  
+
+带env是指最新的babel编译工具，包含了所有的ES*功能，如果我们不需要这么多的新特性，可以有选择的安装编译插件：
 ```
 # ES2015转码规则	
 $ npm install --save-dev babel-preset-es2015
@@ -29,7 +31,7 @@ $ npm install --save-dev babel-preset-stage-2
 $ npm install --save-dev babel-preset-stage-3
 ```
 
-我们可以通过配置文件来让上述的编译工具一个、多个生效，.babelrc:
+在命令行中敲击大量命令显然不是高效的，可以直接通过配置文件配置babel，新建文件 `.babelrc`即可：
 ```
   {
     "presets": [
@@ -49,45 +51,68 @@ $ npm install --save-dev babel-preset-stage-3
 
 常见的处理任务包括：预处理语言的编译、代码压缩混淆、图片体积优化；  
 
-常见的构建工具包括：Grunt（已衰落）、Gulp、F.I.S（百度出品）、webpack(也能承担一部分工作流任务，webpack主要功能是打包)。  
+常见的构建工具包括：
+- Grunt：已衰落
+- Gulp：主流工作流工具，基于NodeJS开发的前端构建工具，国内还有对应产品F.I.S（百度出品）。
+- Webpack：也能承担一部分工作流任务，但其核心功能是打包。
 
-## 三 gulp 
+## 三 Gulp
 
-### 3.1 gulp使用
+### 3.0 Gulp概念
+
+Gulp的作用：
+- 对HTML/CSS/JS等文件进行压缩合并
+- 语法转换：es6转换为es5，less转换为css
+- 公共文件抽取
+
+Gulp也提供了大量的插件来完成更多、更复杂的任务。  
+
+### 3.1 Gulp使用
 
 ```
-1 先全局安装：	npm install gulp -g  (需要全局安装原因：gulp是命令行工具)
-2 再本地安装：	npm install gulp -D	 (需要本地安装原因：gulp也是个工具包)
-3 创建配置文件：gulpfile.js
+第一步：本地安装gulp。进入项目文件夹后执行下列操作
+npm i gulp -D 
+
+第二步：在根目录创建配置文件 gulpfile.js
     const gulp = require('gulp');
     //创建一个默认任务
     gulp.task('default',function () {
         console.log("hello gulp");
     });
-4 命令行执行： gulp default	//由于default是默认任务，这里可以省略
+
+第三步：执行命令。这里要注意如果npm版本小于5.2，则不支持npx命令，需要全局安装一次gulp，然后直接运行gulp命令即可
+npx gulp default	// 由于default是默认任务，这里可以省略
 ```
 
-### 3.2 任务
+### 3.2 使用Gulp创建任务
 
-### #3.2.1 定义任务
-
+示例：
 ```js
-gulp.task('js',function () {
-    gulp.src('src/js/**/*.*')          // **代表递归文件夹
-        .pipe(gulp.dest('dist/'));
+const gulp = reuqire('gulp');
+
+gulp.task('copyJS',function () {        // 定义一个任务，名称为 copyJS
+    gulp.src('src/js/**/*.js')          // src()获取资源路径
+        .pipe(gulp.dest('dist/'));      // pipe()将资源传输给插件。dest()资源构建完毕后自动创建的路径
 });
 ```
-gulp.src() 是获取需要构建资源的路径，也可以使用[]参数（正则也可以），!表示不匹配。
-```
-.src(['src/js/**/*.*','!src/demo.html']) 
-```
-其他API：
-```
-gulp.pipe() 管道，将需要构建的资源“输送”给插件。
-gulp.dest() 构建任务完成后资源存放的路径（会自动创建）
+
+gulp.src()  也可以使用[]参数/正则，!表示不匹配， **代表递归：
+```js
+gulp.src(['src/js/**/*.*','!src/demo.html']) 
 ```
 
-### #3.2.2 watch
+执行任务：
+```
+npx gulp copyJS
+```
+
+### 3.3 Gulp常见API
+
+- gulp.src()：获取资源文件
+- gulp.dest()：输出资源文件
+- gulp.task()：建立gulp任务
+- gulp.watch()：监控文件变化
+- gulp.pipe()：导出获取到的资源
 
 watch用于监视文件的改变，自动构建：
 ```js
@@ -97,8 +122,6 @@ gulp.task('js',function () {
 });
 ```
 
-### #3.2.3 任务依赖
-
 不同任务间存在依赖关系时，可以指定依赖，如下图：
 ```js
 gulp.task('less',['依赖1','依赖2','依赖3'],function(){
@@ -106,47 +129,23 @@ gulp.task('less',['依赖1','依赖2','依赖3'],function(){
 });
 ```
 
-### 3.3 Gulp工作原理
+### 3.4 Gulp插件
 
 Gulp本身只有文件复制等基础API，通过不同的插件实现构建任务，Gulp只是按着配置文件调用执行了这些插件。
 
-### 3.4 插件使用
-
-### #3.4.1 使用步骤
-
-比如需要编译less，需要先安装编译less的gulp插件：npm install gulp-less -S
+比如需要编译less，需要先安装编译less的gulp插件：`npm install gulp-less -S`
 ```js
 const gulp = require('gulp');
 const less = require('gulp-less');
+
 gulp.task('less',function () {
     gulp.src('src/**/*.less')
-        .pipe(less())
+        .pipe(less())                   // 调用插件
         .pipe(gulp.dest('dist/'));
 });
 ```
 
-### #3.4.2 gulp服务器插件
-```js
-const gulp = require('gulp');
-const connect = require('gulp-connect');
-
-gulp.task('server',()=>{
-
-    connect.server({
-        root: 'src',
-        livereload: true
-    });
-    gulp.watch('src/**/*.*',['reload']);
-
-});
-
-gulp.task('reload',()=>{
-gulp.src('src/**/*.*')
-    .pipe(connect.reload());
-});
-```
-
-### #3.4.3 常用gulp插件
+常用gulp插件：
 ```
 gulp-less 		编译LESS文件
 gulp-cssmin 		压缩CSS
@@ -162,16 +161,3 @@ gulp-connect		创建服务器，默认监听8080端口
 gulp-useref
 gulp-if
 ```
-
-### 3.5 缓存处理
-浏览器在加载html网页时，网页内部的css，js，图片都会再次让浏览器发起请求，多次刷新html页面时，这些东西就会造成资源浪费，浏览器因此有了缓存系统，会将css等内容缓存下来。同时，也带来了弊病，一旦后台有修改，前台刷新无法及时获取最新的网页内容。
-浏览器缓存机制：按资源路径和资源名缓存，使用 index.css?v=时间戳”  命名css
-这样书写就会造成每次出现的资源名都会不一样，就可以解决缓存问题。
-但是仍然有不如意的地方：如果时间戳每天变一次，那么在同一天内，后台修改了2次css，那么这时候用户仍然无法体验到修改。。
-gulp-rev 添加版本号 可以让css文件路径名进行改变。
-
-
-
-
-
-

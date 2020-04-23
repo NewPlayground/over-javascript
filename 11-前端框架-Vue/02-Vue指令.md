@@ -1,13 +1,14 @@
-## 一 常见指令
+## 一 指令概念
 
-### 1.1 v-cloak 解决闪烁
+类似 `v-for` 这样在Vue中具备特殊作用的标识即为Vue指令，其本质是自定义属性。
 
-解决插值表达式闪烁问题：当网速较慢时，`{{}}`等内容会被显示在浏览器上，可以通过`v-cloak`指令解决。
+## 二 常见指令
 
-执行过程：
+### 2.1 v-cloak 解决闪烁问题
 
-当vue没有请求过来的时候，标签上的 v-cloak 属性对应的css样式起作用（隐藏掉了）；vue请求过来之后，这个属性就移出了，就可以显示对应的内容，不会出现闪烁了。
+插值表达式具有闪烁问题：当网速较慢时，`{{}}`的原始内容会被显示在浏览器上，过一段很小的内容才会被替换为真实的data内的数据。这样用户体验就会变得很差。  
 
+`v-cloak`指令可以解决上述问题：
 ```js
 // css
 <style>
@@ -20,108 +21,31 @@
 <div v-cloak>{{msg}}</div>
 ```
 
-### 1.2 v-text v-html 解析文本
+当vue没有请求过来的时候，标签上的 v-cloak 属性对应的css样式起作用（隐藏掉了）；vue请求过来之后，这个属性就移出了，就可以显示对应的内容，不会出现闪烁了。
 
-`v-text`，`v-html`的作用与`{{}}`作用一样，区别：
-- 前二者指令没有`{{}}`表达式闪烁问题，但是该指令的属性值会覆盖标签中的内容。  
-- `v-html`能够将数据中的标签文本解析出来，其他指令不行
+### 2.2 v-text v-html v-pre 数据绑定
 
-### 1.3 v-bind 绑定属性
-设置某个标签的某个属性的值为变量，当解析的时候，就会通过此变量去找到对应的变量值，然后替换；
+`v-text`，`v-html`，`v-pre`的作用与`{{}}`作用一样，都可以用来插入数据，且没有闪烁问题：
+```html
+    <div class="div" v-text="msg">
+    </div>
 
-v-bind中可以写合法的js表达式：v-bind会把绑定的属性值当做js的代码去解析执行，那么在此处可以进行表达式相关的操作，表达式解析的结果当做实际的属性值去输出；
-
-```js
-//html
-<input type="button" v-bind:title="mytitle">
-
-//js
-new Vue({
-    el: "#app",
-    data: {
-        mytitle: "自定义title"
-    }
-})
+    <script>
+        new Vue({
+            el: '.div',
+            data: {
+                msg: "hello "
+            }
+        }) 
+    </script>
 ```
 
 注意：
-- v-bind可以省略，直接写冒号即可
-- v-bind中可以使用表达式： `:title="mytitle + '123'"`
+- `v-text`填充文本，不会出现闪烁问题
+- `v-html`填充html文本，能够额外将数据中的标签文本解析出来，所以很容易引起安全问题（XSS攻击）。
+- `v-pre`填充原始数据，作用是跳过编译，直接显示原始文本。比如要在界面中显示 `{{}}` 这2个括号，就需要该指令
 
-### 1.4 v-on 绑定事件
-每当触发对应事件的时候，就会调用vue的事件绑定机制，然后找到并执行v-on绑定的方法。
-```js
-//html
-<input type="button" v-on:click="show">
-
-//js
-new Vue({
-    el: "#app",
-    data: {
-        mytitle: "自定义title"
-    },
-    methods: {
-        show: function(){
-            alert(this.mytitle);        // this代表new出来的vm实例
-        }
-    }
-})
-```
-
-注意：v-on可以缩写为@  
-
-v-on提供一些事件修饰符，如：`@click.stop="clickHandler"`
-- stop:阻止冒泡
-- prevent:阻止默认事件
-- capture：添加事件侦听器时使用事件捕获模式
-- self：只有当事件在该元素本身（非子元素）触发时触发回调
-- once：事件只触发一次
-
-事件修饰符是可以串联写的：如：`@click.prevent.once="clickHandler"`
-
-self与stop区别：
-
-self与stop都可以触发阻止冒泡行为，stop阻止了所有冒泡，而self只阻止了自己身上的冒泡行为；
-
-```js
-// stop 案列
-// <div  id="outter" @click="outterEv">
-//     <div  id="inner" @click="innerEv">
-//         <button id="btn" @click.stop="btnEv"></button>
-//     </div>
-// </div>
-
-// self 案列
-<div  id="outter" @click="outterEv">
-    <div  id="inner" @click.self="innerEv">
-        <button id="btn" @click="btnEv"></button>
-    </div>
-</div>
-
-// js
-new Vue({
-    el: "#app",
-    data: {},
-    methods: {
-        btnEv(){
-            console.log('触发btn点击事件');
-        },
-        innerEv(){
-            console.log('触发inner点击事件');
-        },
-        outterEv(){
-            console.log('触发outter点击事件');
-        },
-    }
-})
-```
-
-为三个元素都绑定一个点击事件：
-- 默认当点击button时，事件冒泡，事件被依次触发三次
-- 当btn为stop时，则阻止冒泡，事件只被btn触发
-- 当inner为self时，则事件冒泡到inner处不触发，且继续冒泡到outter处触发
-
-### 1.5 v-model 双向绑定
+### 2.3 v-model 双向数据绑定
 
 ```js
     <!-- 单向绑定：无法修改界面 -->
@@ -134,13 +58,71 @@ new Vue({
     <input type="text" v-model="msg">
 ```
 
-注意：v-model用于表单元素中。
+注意：
+- v-model一般用于表单元素中
+- v-once作用：显示内容后不再具有数据响应功能
 
 
-### 1.6 v-for
-当在组件中使用v-for时，key现在是必须的；
+### 2.4 v-bind 绑定属性
 
-每次for循环的时候，通过指定的key来标识唯一身份，
+```html
+<input type="button" v-bind:title="mytitle">
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            mytitle: "自定义title"
+        }
+    })
+</script>
+```
+
+注意：
+- v-bind可以省略，直接写冒号即可 `:title="mytitle"`
+- v-bind中可以使用表达式： `:title="mytitle + '123'"`
+
+### 2.5 v-on 绑定事件
+
+```html
+<input type="button" v-on:click="show">
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            mytitle: "自定义title"
+        },
+        methods: {                          // 用于定义方法
+            show: function(){
+                alert(this.mytitle);        // this代表new出来的vm实例
+            }
+        }
+    })
+</script>
+```
+
+v-on可以缩写为@，绑定的事件函数可以写函数名，也可以书写函数调用：
+```
+@click='do'                         // 该方式默认会携带事件对象，do函数的第一个参数就是事件对象
+@click='do("hello", $event)'        // 最后一个参为事件对象，并且只有显式传递才能获取到
+```
+
+开发者可以在事件处理函数中对事件进行阻止冒泡、阻止默认事件等操作，但是vue也提供了更简便的工具-事件修饰符：
+- stop：阻止冒泡，所有冒泡行为都被阻止
+- self：阻止冒泡，只阻止了自己身上的冒泡行为
+- prevent：阻止默认事件
+- capture：添加事件侦听器时使用事件捕获模式
+- self：只有当事件在该元素本身（非子元素）触发时触发回调
+- once：事件只触发一次
+
+一些特殊标签也拥有自身专属的事件修饰符，如按键修饰符：`@keyup.enter=''`等。  
+
+事件修饰符是可以串联写的：如：`@click.prevent.once="clickHandler"`。  
+
+### 2.6 v-for  循环列表
+
+当在组件中使用v-for时，key现在是必须的，每次for循环的时候，通过指定的key来标识唯一身份：
 ```js
 <div id="app">
     <h2 v-for="item in arr">{{item}}</h2>
@@ -153,11 +135,9 @@ new Vue({
 
 注意：2.20版本以上的vue中，key是必须的
 
-### 1.7 v-if与v-show
+### 1.7 v-if与v-show 条件渲染
 
-v-if：每次都会重新创建或移除元素，切换性能消耗高;
-
-v-show：只是切换display:none的样式，初始渲染消耗高；
+v-if 每次都会重新创建或移除元素，切换性能消耗高。v-show只是切换display:none的样式，初始渲染消耗高。  
 
 ```html
 
@@ -170,7 +150,6 @@ v-show：只是切换display:none的样式，初始渲染消耗高；
     <button @click="flag=!flag">点击</button>
 ```
 
+**如果元素涉及到频繁的切换推荐使用v-show；**  
 
-**如果元素涉及到频繁的切换，最好不要用v-if，推荐使用v-show；**
-
-**如果元素可能永远也不会被显示出来被用户看到，推荐使用v-if；**
+**如果元素可能永远也不会被显示出来被用户看到推荐使用v-if；**
