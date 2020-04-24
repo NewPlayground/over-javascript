@@ -1,59 +1,44 @@
-##  1、 vuex相关概念
-### 1.1 vuex是什么？
+## 一 vuex概念
 
-vuex是vue的一个插件；是对vue应用中多个组件的共享状态进行集中式的管理（读/写）；
+在vue中，不同级别组件的通信可以利用事件总线来快速实现通信，但是在大型项目中，直接使用事件总线管理这些数据相当复杂，且耦合度过高。  
 
-###  1.2 什么是“状态管理模式”？
+vuex是vue的一个插件，可以对vue应用中多个组件的共享状态进行集中式管理（读/写）。vuex的主要作用是状态管理，而非通信，但是由于状态管理即是数据的管理，vuex也可以用来进行数据通信。   
 
-状态自管理应用包含以下几个部分：
-+ state——驱动应用的数据源；
-+ view——以声明方式将 state 映射到视图；
-+ actions——响应在 view 上的用户输入导致的状态变化(包含n个更新状态方法)。
+其实我们手动书写一个全局对象来保存数据也是可行的，类似后端的redis，但是vuex还具备响应式驱动DOM更新的能力。  
 
-```js
-new Vue({
-  // state
-  data () {
-    return {
-      count: 0
-    }
-  },
-  // view
-  template: `
-    <div>{{ count }}</div>
-  `,
-  // actions
-  methods: {
-    increment () {
-      this.count++
-    }
-  }
-})
+一般情况下，vuex用来存储：登录、购物车信息、地理位置等多个界面共享的数据。  
+
+## 二 vuex简单使用
+
+状态自管理应用包含以下三个部分：
+- state——驱动应用的数据源；
+- view——以声明方式将 state 映射到视图；
+- actions——响应在 view 上的用户输入导致的状态变化(包含n个更新状态方法)。
 
 ```
+# 安装(vue-cli在安装时若勾选了vuex，则无需安装)
+npm i vuex -D
+```
 
+在项目根目录新建状态管理文件`store/index.js`：
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-**更新显示有两种：**
-+ 初始化显示；
-+ 更新显示；
+Vue.use(Vuex)
 
-初始化显示：模板需要去读取状态
-![](../images/JavaScript/vue-flow2.jpg)
-
-更新显示：起始点在view的模板界面上，通过事件，触发后，调用actions里的函数，actions里的函数去更新state状态数据，状态数据发生改变会引起界面(view)的更新显示。
-![](../images/JavaScript/vue-flow1.jpg)
-  
-
-### 1.3 多组件共享状态问题
-
-+ 多个视图依赖于同一个状态
-+ 来自不同视图的行为需要变更同一个状态
-+ 以前的解决方法：
-
-      a、将数据以及操作数据的行为都定义在父组件；
-      b、将数据以及操作数据的行为传递给需要的各个组件（有可能需要多级传递）；
-+ vuex是用来解决这些问题的；
-  
+export default new Vuex.Store({
+  state: {
+    // 自定义的共享状态
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+  }
+})
+```
 
 ## 2 vuex的核心概念和API
 
