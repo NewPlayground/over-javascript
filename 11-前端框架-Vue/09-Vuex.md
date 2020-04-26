@@ -11,9 +11,9 @@ vuex是vue的一个插件，可以对vue应用中多个组件的共享状态进�
 ## 二 vuex简单使用
 
 状态自管理应用包含以下三个部分：
-- state——驱动应用的数据源；
-- view——以声明方式将 state 映射到视图；
-- actions——响应在 view 上的用户输入导致的状态变化(包含n个更新状态方法)。
+- state：应用的数据，即状态
+- view：以声明方式将 state 映射到视图；
+- actions：响应在 view 上的用户输入导致的状态变化(包含n个更新状态方法)。
 
 ```
 # 安装(vue-cli在安装时若勾选了vuex，则无需安装)
@@ -27,478 +27,281 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-    // 自定义的共享状态
+const store = new Vuex.Store({
+  state: {            // 自定义的共享状态,它应该是唯一的
+    uid: 10001
   },
-  mutations: {
+  mutations: {        
+
   },
   actions: {
+
+  },
+  getters: {
+
   },
   modules: {
+
   }
 })
+
+export default store
 ```
 
-## 2 vuex的核心概念和API
+在组件中使用：
+```html
+<p>{{this.$store.state.num}}</p>
+```
 
-### 2.1 state
-+ vuex 管理的状态对象,里面会包含一些具体的状态。
-+ 它应该是唯一的
+## 三 vuex的核心概念和API
+
+### 3.1 state
+
+vuex 管理的状态对象，里面会包含一些具体的状态，也即通用的数据，如登录信息、购物车信息、地理位置信息。  
+
+示例：
 ```js
-  const state = {
-    xxx: initValue
-  }
-  
+  state: {            // 自定义的共享状态,它应该是唯一的
+    uid: 10001
+  },
 ```
-### 2.2 mutations
-+ 包含多个直接更新 state 的方法（回调函数）的对象；
-+ 谁来触: action 中的 commit(mutation名称)；
-+ 只能包含同步的代码，不能写异步的代码；
-  ```js
-  const mutations = {
-    yyy(state,date){
-      // 更新state的某个属性
-    }
-  }
-  ```
 
-### 2.3 actions
-+ 包含多个事件回调函数的对象,通过组件来触发；
-+ 通过执行 commit()来触发mutation的调用，间接更新state；
-+ 谁来触发：组件中：$store.dispatch('action 名称')；  // 'zzz'
-+ 可以包含异步代码（定时器，ajax）
-+ backend Api
-  ```js
-  const actions= {
-    zzz({commit,state},data1){
-      commit('yyy',data2)
-    }
-  }
+state保存的数据推荐使用 单一状态树 的形式，即大量的不同的数据都统一使用一个store，而不是多个store对象。在这唯一的store中，进行数据的树形划分。  
 
-  ```
+### 3.2 mutations
 
-### 2.4 getters
-+ 包含多个计算属性（get）的对象
-+ 谁来读取：组件中$store.getters.xxx
-  ```js
-    const getters = {
-      mmm(state) {
-        return ... 
-      }
-    }
-  ```
-### 2.5 modules
-+ 包含多个module
-+ 一个module 是一个store的配置对象
-+ 与一个组件对应（包含有共享数据）
+vuex 并不推荐直接修改state数据，而是通过一个机制来进行状态更新，如图所示：  
 
-## 3 运行过程
-+ 组件读状态显示：
-
-    a、直接读取；
-
-    b、对数据进行处理后再读取；
-
-+ 在组件中，通过 dispatch 去触发 action调用；
-+ 在action里面，通过commit 来触发 mutations 调用；
-
-    a、在actions里，可以请求后台数据；
-+ 在 mutations 里，直接去更新 state；
-+ state 更新 components 组件就会渲染；
-### 
 ![](../images/JavaScript/vue-vuex.jpg)
 
-##  4 用法
-### 4.1 向外暴露 store 对象
+组件要更新数据时，依次经过： actions -> mutatiosn -> state，这样的路径进行修改。   
+
+为什么要绕一大圈？  
+
+在当前一个页面中，状态发生了变化，并不知道其来自于哪个地方触发了状态改变，调试很困难。 vue的开发工具 Devtools可以在浏览器中清晰的展示是哪个组件的更新导致了状态的变化，该工具依赖于 mutations ，所以我们使用 mutations 中状态更新的方法来改变状态。  
+
+mutations：
 ```js
-  export default new Vuex.Store({
-    state,
-    mutations,
-    actions,
-    getters
-  })
-```
-### 4.2 组件中
-```js
-  import {mapState,mapGetters,mapActions} from 'vuex'
-
-  export default{
-    computed: {
-      ...mapState(['xxx']),
-      ...mapGetters(['mmm']),
+  state: {
+    num: 10
+  },
+  mutations: {
+    updNum(state){     // 默认有一个参数 state
+      state.num++
     }
-    methods:mapActions(['zzz'])
-  }
-  {{xxx}}{{mmm}}@click='zzz(date)'
-```
-### 4.3 映射
-
- Store对象创建好了之后需要映射配置：
- ```js
-    import Store from './store'
-
-    new Vue({
-      Store,
-    })
- ```
-
-### 4.4 Store对象
-+ 所有用vuex管理的组件中都多了一个属性 $store，它就是一个store对象
-+ 属性：
-
-    state：注册的state对象
-
-    getters：注册的getters对象
-
-+ 方法：
-  
-    dispatch(actionName,data) ： 此方法会触发action调用（分发调用 action）
-
-
-
-## 5 使用案列
-
-### 5.1 创建 store 对象
-``` js
-  //  文件store.js
-
-  import Vue from 'vue';
-  import Vuex from 'vuex';
-
-  Vue.use(Vuex);
-
-  // 包含多个状态对象
-  const state = {  // 初始化状态
-    count:0
-  }
-
-  // 包含多个getter计算属性函数的对象
-  const getters = {   // 不需要调用，只需要读取属性
-    evenOrOdd(state){
-      return state.count%2 === 0?'偶数':'奇数';
-    }
-  }
-
-  // 包含多个更新state函数的对象
-  const mutations = {  // 一个mutation是一个函数
-    // 增加的mutation
-    addMutation(state){
-      state.count++;
-    },
-
-    // 减少的mutation
-    delMutation(state){
-      state.count--;
-    }
-  }
-
-  // 包含多个事件回调函数的对象
-  const actions = {
-    // 增加的action
-    addAction({commit}){
-      commit('addMutation');
-    },
-    // 减少的action
-    delAction({commit}){
-      commit('delMutation');
-    },
-    // 带条件的action
-    addOddAction({commit,state}){
-      if(state.count%2 === 0){
-        // 增加的action
-         commit('addMutation');
-      }
-    },
-    // 异步的action
-    addAcyncAction({commit}){  // 在action里面直接可以执行异步代码
-      setTimeout(()=>{
-        // 增加的action
-        commit('addMutation');
-      },1000)
-    }
-  }
-
-
-  // 注意：真正写项目的时候，上面声明的这些对象都会写在单独的文件里面，相互之间是隔离的，
-
-
-
-  export default new Vuex.Store({
-    state,  // 包含多个状态对象
-    mutations,  // 包含多个更新state函数的对象
-    actions,   // 包含多个事件回调函数的对象
-    getters,  // 包含多个getter计算属性函数的对象
-  })
-
-
-
+  },
 ```
 
-
-### 5.2 映射 store 对象
-```js
-  // 文件 main.js
-
-  import Vue from 'vue'
-  import App from './app'
-  import store from './store'
-
-  new Vue({
-    el:'#app',
-    components:{App},
-    template:'<App>',
-    store     // 所有的组件对象都多了个属性：$store, 也就是多了个store对象
-  })
-```
-### 5.3 组件内使用 store 对象
-
-```html
-  // 文件 app.vue
-
-  <template>
-    <div>
-      <p>{{$store.state.count}},count is {{addOddFn}}</p>
-       <p>{{addAcyncFn}}</p>
-      <button @click="addFn">+</button>
-      <button @click="delFn">-</button>
-      <button @click="addOddFn">偶数加1</button>
-      <button @click="addAcyncFn">异步加1</button>
-    </div>
-  </template>
-
-  <script>
-    export default {
-      computed:{
-        evenOrOdd(){
-          return  this.$store.getters.evenOrOdd;  
-        }
-      },
-      methods:{
-        addFn(){
-          // 通知vuex去增加
-          this.$store.dispatch('addAction');  // 触发store中对应的action调用
-        },
-        delFn(){
-          // 通知vuex去减少
-          this.$store.dispatch('delAction'); 
-        },
-        addOddFn(){
-          this.$store.dispatch('addOddAction'); 
-        }
-        ,
-        addAcyncFn(){
-          this.$store.dispatch('addAcyncAction'); 
-        }
-      }
-    }
-  </script>
-
-  <!-- 注意：在模板里面不需要写：this.$store，直接写$store；而在js里面则需要写成：this.$store -->
-
-```
-
-### 5.4 组件内使用store对象 进行优化
-上面 app.vue文件 里面的组件，在使用store对象的时候有很多重复的代码，如：
-    
-    ‘this.$store.getters’、
-    ‘this.$store.dispatch’、
-    ‘this.$store.state’
-
-我们可以在组件使用store对象的时候进行优化，让代码看起来更简洁，同时不需要在模板里面再去操作state了（如：$store.state.count）：
-
+在组件中使用：
 ```html
 <template>
-  <div>
-    <p>{{count}},count is {{addOddFn}}</p>
-    <p>{{addAcyncFn}}</p>
-    <button @click="addFn">+</button>
-    <button @click="delFn">-</button>
-    <button @click="addOddFn">偶数加1</button>
-    <button @click="addAcyncFn">异步加1</button>
+  <div id="app">
+    <p>{{this.$store.state.num}}</p>
+    <button @click="doUpdNum">改变num</button>
+
   </div>
 </template>
 
 <script>
-  import {mapState,mapActions,mapGetters} from 'vuex';  // 此处的map是映射的意思
-  export default {
-    computed:{
-      ...mapState(['count']),   
-      ...mapGetters(['evenOrOdd']),
-    },
-    methods:{
-      ...mapActions({  
-          addFn:'addAction',  
-          delFn:'delAction', 
-          addOddFn:'addOddAction', 
-          addAcyncFn:'addAcyncAction', 
-      })
 
-      // 此处 mapActions() 的参数如果写成数组的话，里面的元素命名必须是： 事件函数名和actions里对应的函数名相同；
+export default {
+  data(){
+    return {
     }
-  }
-
-  
+  },
+  methods: {
+    doUpdNum(){
+      this.$store.commit('updNum');   // commit
+    }
+  },
+}
 </script>
 ```
 
-**小贴士：**
-+ mapState()、mapGetters()、mapActions()返回值是对象；
-  
-    返回值的代码解释为：
+mutations包含2个部分：
+- 回调函数：即mutations内部定义的某个方法，第一个参数默认是state
+- 事件类型：即该方法的方法名，在组件中调用该方法时使用该方法名字符串
+
+mutations中传递参数的方式：
 ```js
-
-    // ...mapGetters(['evenOrOdd']) 
-    {evenOrOdd(){
-      return this.$store.getters['evenOrOdd'];
-    }}
-
+  state: {
+    num: 10
+  },
+  mutations: {
+    updNum(state, count){     // 默认有一个参数 state
+      state.num += count
+    }
+  },
+  getters: {
+    getNum(state){
+      return state.num + 5
+    }
+  },
 ```
 
-### 6 vuex结构分解
-
-在实际项目中，vuex里面的几个对象会单独分解成几个单独的js文件，结构如下：
-
-    store文件夹：
-        |
-        |
-        ——> index.js
-        |
-        |
-        ——> state.js
-        |
-        |
-        ——> getters.js
-        |
-        |
-        ——> mutation-types.js
-        |
-        |
-        ——> mutations.js
-        |
-        |
-        ——> actions-types.js
-
-
-
-1、组件文件：
+组件中展示：
 ```html
-  <template>
-    <div>
-        <p>数字为：{{$store.state.count}} ，此数字是{{evenOrOdd}}</p>
-        <p>操作：
-            <button @click="addFn">加1</button>
-            <button @click="delFn">减2</button>
-            <button @click="addOddFn">偶数加1</button>
-        </p>
-    </div>
+<template>
+  <div id="app">
+    <p>原始数据：{{this.$store.state.num}}</p>
+    <button @click="doUpdNum(10)">改变num</button>
+    <p>getters数据：{{this.$store.getters.getNum}}</p>
+  </div>
 </template>
 
 <script>
-    import {mapState, mapGetters, mapActions} from 'vuex';
-    export default {
-        computed:{
-            ...mapState(['count']),
-            ...mapGetters(['evenOrOdd']),
-        },
-        methods: {
-            delFn(){
-                this.$store.dispatch('delAction',2);
-            },
-            ...mapActions({
-               addFn:'addAction', 
-            }),
-        },
+
+export default {
+  data(){
+    return {
     }
+  },
+  methods: {
+    doUpdNum(count){
+      this.$store.commit('updNum', count);
+    }
+  },
+}
 </script>
 ```
- 2、store文件夹下面的index.js 文件：
+
+mutations还有一种提交风格：
 ```js
-
-import Vue from 'vue';
-import Vuex from 'vuex'
-import state from './state'
-import getters from './getters'
-import mutations from './mutations'
-import actions from './actions'
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state, // 包含多个状态对象
-  mutations, // 包含多个更新state函数的对象
-  actions, // 包含多个事件回调函数的对象
-  getters, // 包含多个getter计算属性函数的对象
-})
-
-```
-3、store文件夹下面的state.js 文件：
-```js
-export default { // 状态对象
-  count: 0
-}
-```
-4、store文件夹下面的getters.js 文件：
-```js
-export default { // 
-  evenOrOdd(state) {
-    return state.count % 2 === 0 ? '偶数' : '奇数';
-  }
-}
+this.$store.commit({
+  type: "updNum",
+  count: 100
+});
 ```
 
-5、store文件夹下面的action.js 文件：
+### 3.3 actions
+
+mutations中推荐保存 同步 操作，而 actions 中推荐保存 异步 操作。 
+
+如果不按照这个规范，Devtools工具也会出现跟踪问题。  
+
+actions示例：
 ```js
-
-import {ADD_M,DEL_M} from './mutation-types'
-
-export default { // 包含多个 接收组件通知，触发mutation调用，间接更新状态的 对象
-   addAction({commit}) {
-    // 提交对mutation的请求
-    commit(ADD_M);
+  state: {
+    num: 10
   },
-
-  delAction({commit}, arg) { // 形数 ：arg
-    // 提交对mutation的请求
-    commit(DEL_M, {arg});  
-    // 形数 ：arg，本身不用，要交给mutation去使用；
-    // 把数据从 action 提交给 mutation,无论数据本身是什么类型，都要用个对象把数据给包裹起来:{arg}；
+  mutations: {
+    updNum(state, count){     // 默认有一个参数 state
+      state.num += count
+    },
+    updNumAsync(state, count){
+      state.num += count + 3000
+    }
   },
+  actions: {
+    updNumAsync(context, count){     // 默认参数为context上下问对象，这里是 store对象
+      setTimeout(() => {
+        context.commit('updNumAsync', count)
+      }, 2000)
+    }
+  },
+```
 
-  addOddAction({commit,state}) {
-    if (state.count % 2 === 0) {
-      commit('addMutation');
+组件中使用：
+```html
+<template>
+  <div id="app">
+    <p>原始数据：{{this.$store.state.num}}</p>
+    <button @click="doUpdNum(10)">同步改变num</button><br/>
+    <button @click="doUpdNumAsync(10)">异步改变num</button>
+  </div>
+</template>
+
+<script>
+
+export default {
+  data(){
+    return {
+    }
+  },
+  methods: {
+    doUpdNum(count){
+      this.$store.commit('updNum', count);
+    },
+    doUpdNumAsync(count){
+      this.$store.dispatch('updNumAsync', count);
     }
   },
 }
+</script>
 ```
 
-6、store文件夹下面的mutation-types.js 文件：
+### 3.4 getters
 
-  action.js文件 和 mutations.js文件 之间 里面的函数有个名词对应的关系，可以专门的写一个常量模块去对应：
+类似vue中的计算属性，在这里可以对获取到state数据进行修饰。  
+
 ```js
-
-// 常量一般都是大写
-export const ADD_M = 'addMutation'; // 增加
-export const DEL_M = 'delMutation' // 减少
-
+  getters: {
+    getNum(state){
+      return state.num + 5
+    }
+  },
 ```
 
-7、store文件夹下面的mutations.js 文件：
+组件中使用：
+```html
+    <p>{{this.$store.getters.getNum}}</p>
+```
+
+### 3.5 modules
+
+由于vuex推荐使用单个状态树，状态过多也很容易造成混乱，modules可以将这些状态进行划分。每个modules就是一个store的配置对象，一般与一个组件对应：
 ```js
+  modules: {
+    moduleA: {
+      state:{},
+      mutations:{}
+    },
+    moduleB: {
+      state:{},
+      mutations:{}
+    }
+  }
+```
 
-import {ADD_M,DEL_M} from './mutation-types'
+在组件中使用：
+```html
+  this.state.moduleA.num
+```
 
-export default { // 包含多个 由action触发 去直接更新状态的 对象
+## 四 vuex 的响应规则
 
-  // 使用常量
+Vuex的store中的state是响应的，当state数据发生改变时，组件中的数据也会发生改变，不过store中必须 初始化好所需要的属性 ！
 
-  [ADD_M](state) {
-    state.count++;
-  },
+给state对象添加新属性时，此时state中新增了数据，但是界面是不会发生变化的，使用下面的方式可以进行响应
+- 方式一：给state的person对象新增age属性：
+  - `Vue.set(state.person, 'age', 26)`
+  - 删除也可以做到响应：`Vue.delete(state.person, 'age')`
+- 方式二：用新对象给旧对象重新赋值
 
-  [DEL_M](state, {arg}) {  // 接收参数 ：{arg}；名字要和action里传递过来的参数名一样；
-    state.count += arg;
-  },
+## 五 状态相关文件的组织格式
+
+由于状态文件极大，可以对其分模块使用，store文件夹中使用下列文件：
+- index.js：store的导出信息
+- mutations.js：数据更新方法文件
+- acitions.js：数据异步更新方法文件
+- ....依次类推，每个vuex的属性单独一个文件保存
+
+示例：
+```js
+// actions.js 
+export default {
+    updNumAsync(context, count){     // 默认参数为context上下问对象，这里是 store对象
+      setTimeout(() => {
+        context.commit('updNumAsync', count)
+      }, 2000)
+    }
 }
+
+
+// index.js
+import actions from './actions'
+
+const store = new Vuex.Store({
+  actions: actions
+})
 ```
