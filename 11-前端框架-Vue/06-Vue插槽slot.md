@@ -163,3 +163,14 @@ comp 位于 组件 #app 中，所以会使用根组件中的data数据，而不�
     </script>
 ```
 
+## 四 vue2.6之后的插槽变化
+
+在vue2.6之后，为了兼容性，普通插槽与作用域插槽基本没有了太大区别。  
+
+插槽在vue2.6前后的写法对比
+- 普通插槽：
+  - 2.6之前：`<template slot="xxx"></template>`
+  - 2.6之后：`<template v-slot:"xxx"></template>`
+- 作用域插槽：
+  - 2.6之前：`<template slot="xxx" slot-scope="props"></template>`
+  - 2.6之后：`<template v-slot:xxx="props"></template>`
