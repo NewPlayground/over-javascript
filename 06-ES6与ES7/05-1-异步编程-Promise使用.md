@@ -82,16 +82,20 @@ p.then(function(res){
  })
 ```
 
-构造函数执行的请求结果有三种状态：
-- pending：默认结果，等待中，没有得到结果
-- resolved：得到结果，继续执行，使用resolve函数可以修改该值
-- rejected：得到错误，拒绝执行，使用reject函数可以修改该值
+每个Promise都会经过一个短暂的生命周期：未决，已决，在这个生命周期内，Promise会有三种可能的状态：
+- 未决（unsettled）：表示异步操作尚未结束，此时的Promise只有挂起态一种状态
+  - 挂起态（pending）此时Promise的状态为 ，
+- 已决（settled）：此时Promise已经执行结束，但是可能绵连执行成功、执行失败两种状态
+  - 已完成（fulfilled）：Promise的异步操作成功结束，对应着完成处理函数 `fulfillment handler `
+  - 已拒绝（rejected）： Promise的异步操作未成功结束，可能是由于错误、其他原因导致，对应着错误处理函数 `rejection handler `
+
+Promise的状态属性`[[PromiseState]]`并未暴露给开发者，所以无法通过编程方式判断Promise状态，但是可以使用 `then()` 方法在Promise状态改变时执行特定操作。  
 
 
-贴士：then方法可以接收两个参数，第一个参数用来处理resolved，第二个参数处理rejected，后者和catch相同：
+then方法可以接收两个参数，第一个参数用来处理resolved，第二个参数处理rejected，后者和catch相同：
 ```js
 .then(
-    function(resp){
+    function(res){
 
     },
     function(err){
@@ -108,3 +112,34 @@ p.then(function(res){
 - Promise.race：参数数组中**任一**Promise实例的状态修改，调用then方法
   - 示例：`Promise.all([fn1, fn2])`
   - 示例：`Promise.race([fn1, fn2])`
+
+Promise.resolve() / Promise.reject() 可以直接创建一个已决、未决Promise实例。
+```js
+let p = Promise.resolve(42);
+
+p.then(function(value) {
+    console.log(value); // 42
+});
+```
+
+## 四 Promise的拒绝处理争议
+
+Promise的最大争议是：Promise被拒绝时，若缺少拒绝处理函数，会静默失败：
+```js
+let p = Promise.reject(42);
+
+// 此时 p 不会被处理
+
+// 一段时间之后
+p.catch( value => {
+    // 现在 p 才被处理
+    console.log(value);     
+});
+```
+
+在未来的ES版本中才会解决该问题，Node和浏览器目前已经做出了支持：若没有拒绝处理事件，会执行默认的错误处理函数。
+- unhandledRejection ： 当一个 Promise 被拒绝，而在事件循环的一个轮次中没有任何拒绝处理函数被调用， 该事件就会被触发；
+- rejectionHandled ： 若一个 Promise 被拒绝，并在事件循环的一个轮次之后有了拒绝处理函数被调用，该事件就会被触发。
+
+这两个事件旨在共同帮助识别已被拒绝但未曾被处理 promise。  
+
