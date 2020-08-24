@@ -86,6 +86,12 @@ React:
 - [《Node.js 设计模式》第2版](https://book.douban.com/subject/30159269/)：很不错的书籍
 - [《Node.js:来一打C++扩展》](https://book.douban.com/subject/30247892/)：窥探Node底层的好书
 
+### 其他技术
+
+Electron：
+- [《Electron跨平台开发实战》](https://book.douban.com/subject/34838092/)
+- [《Electron实战：入门、进阶与性能优化》](https://book.douban.com/subject/35069275/)
+
 
 ## 附录：笔记汇总
 
