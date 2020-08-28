@@ -1,12 +1,13 @@
 ## 一 UDP 简介
 
-TCP数据传输是一种可靠的数据传输方式，在数据传输之前必须建立客户端与服务端之间的连接。UDP是一种面向非连接的协议，所以其传输速度比TCP更加快速。
+TCP 数据传输是一种可靠的数据传输方式，在数据传输之前必须建立客户端与服务端之间的连接。UDP 是一种面向非连接的协议，所以其传输速度比 TCP 更加快速。
 
-## 二 Node开发UDP程序
+## 二 Node 开发 UDP 程序
 
-### 2.1 UPD服务端
+### 2.1 UPD 服务端
 
-Node使用dgram模块中的createSocket()方法创建一个UDP服务器，这个方法接收一个必须参数和一个可选参数，必须参数是一个标识UDP协议的类型，可指定为udp4或者udp6，可选参数是一个回调函数，即UDP服务器接收数据时触发的回调函数，回调函数有2个参数，一个是接收的数据，一个是存放发送者信息的对象。
+Node 使用 dgram 模块中的 createSocket()方法创建一个 UDP 服务器，这个方法接收一个必须参数和一个可选参数，必须参数是一个标识 UDP 协议的类型，可指定为 udp4 或者 udp6，可选参数是一个回调函数，即 UDP 服务器接收数据时触发的回调函数，回调函数有 2 个参数，一个是接收的数据，一个是存放发送者信息的对象。
+
 ```JavaScript
 var dgram = require('dgram');
 
@@ -19,7 +20,8 @@ socket.bind(3000,'localhost',function () {
 });
 ```
 
-这里与TCP的createServer一样，返回的都是socket对象，且回调函数就是监听message事件，因此使用createServer也可以不指定回调函数，直接显示的监听message事件就可以。
+这里与 TCP 的 createServer 一样，返回的都是 socket 对象，且回调函数就是监听 message 事件，因此使用 createServer 也可以不指定回调函数，直接显示的监听 message 事件就可以。
+
 ```JavaScript
 const dgram = require('dgram');
 
@@ -34,7 +36,7 @@ socket.on('message',function (msg,rinfo) {
 });
 ```
 
-### 2.2 UDP客户端
+### 2.2 UDP 客户端
 
 ```JavaScript
 var dgram = require('dgram');

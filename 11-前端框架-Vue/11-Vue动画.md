@@ -1,6 +1,7 @@
-## 一 Vue过渡动画
+## 一 Vue 过渡动画
 
 Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加 进入/离开 过渡：
+
 - 条件渲染 (使用 v-if)
 - 条件展示 (使用 v-show)
 - 动态组件
@@ -9,6 +10,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 一个完整的动画分为了两部分：进入部分和离开部分。进入和离开部分都分为两个时间点和一个时间段。
 
 进入部分：
+
 ```
     v-enter：
         动画进入之前元素的初始状态。
@@ -24,6 +26,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 ```
 
 离开部分：
+
 ```
     v-leave：
         动画离开之前元素的初始状态；
@@ -39,71 +42,73 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 ```
 
 贴士：
-- v-enter 和 v-leave-to的状态是一致的；
-- v-enter-to和 v-leave 的状态是一致的；
+
+- v-enter 和 v-leave-to 的状态是一致的；
+- v-enter-to 和 v-leave 的状态是一致的；
 
 ## 二 元素过渡步骤
 
-使用transition元素，把 需要被动画控制的元素 包裹起来，自定义两组样式，来控制 transition 内部元素实现动画；
+使用 transition 元素，把 需要被动画控制的元素 包裹起来，自定义两组样式，来控制 transition 内部元素实现动画；
+
 ```html
-    <button @click="flag=!flag">显示/隐藏</button>
+<button @click="flag=!flag">显示/隐藏</button>
 
-    <transition>
-        <p v-show="flag">我想通过动画显示隐藏</p>
-    </transition>
+<transition>
+  <p v-show="flag">我想通过动画显示隐藏</p>
+</transition>
 
-    <script>
-        new Vue({
-            data:{
-                flag: true;
-            }
-        })
-    </script>
+<script>
+  new Vue({
+      data:{
+          flag: true;
+      }
+  })
+</script>
 
-    <style>
-        .v-enter,
-        .v-leave-to {
-            opacity: 0;
-        }
-        .v-leave-active,
-        .v-enter-active {
-            transition: all 0.4s; 
-        }
-
-    </style>
+<style>
+  .v-enter,
+  .v-leave-to {
+    opacity: 0;
+  }
+  .v-leave-active,
+  .v-enter-active {
+    transition: all 0.4s;
+  }
+</style>
 ```
+
 ### 8.2 自定义过渡类名
 
 **8.2.1 步骤**
-+ 在 transition 标签上添加name属性，并给name属性赋值，赋的值替换 ‘v-’ 来作为过渡类类名的前缀；
-+ 使用自定义过渡类名 定义两组样式，来控制 transition 内部元素实现动画；
+
+- 在 transition 标签上添加 name 属性，并给 name 属性赋值，赋的值替换 ‘v-’ 来作为过渡类类名的前缀；
+- 使用自定义过渡类名 定义两组样式，来控制 transition 内部元素实现动画；
 
 ```html
-    <button @click="flag=!flag">显示/隐藏</button>
+<button @click="flag=!flag">显示/隐藏</button>
 
-    <transition name='my'>
-        <p v-show="flag">我想通过动画显示隐藏</p>
-    </transition>
+<transition name="my">
+  <p v-show="flag">我想通过动画显示隐藏</p>
+</transition>
 
-    <script>
-        new Vue({
-            data:{
-                flag: true;
-            }
-        })
-    </script>
+<script>
+  new Vue({
+      data:{
+          flag: true;
+      }
+  })
+</script>
 
-    <style>
-        .my-enter,
-        .my-leave-to {
-            opacity: 0;
-        }
-        .my-leave-active,
-        .my-enter-active {
-            transition: all 0.4s; 
-        }
-
-    </style>
+<style>
+  .my-enter,
+  .my-leave-to {
+    opacity: 0;
+  }
+  .my-leave-active,
+  .my-enter-active {
+    transition: all 0.4s;
+  }
+</style>
 ```
 
 ### 8.3 钩子函数实现动画
@@ -115,24 +120,21 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 
 ```html
 <transition
-    v-on:before-enter="beforeEnter"
-    v-on:enter="enter"
-    v-on:after-enter="afterEnter"
-    v-on:enter-cancelled="enterCancelled"
-
-    v-on:before-leave="beforeLeave"
-    v-on:leave="leave"
-    v-on:after-leave="afterLeave"
-    v-on:leave-cancelled="leaveCancelled"
+  v-on:before-enter="beforeEnter"
+  v-on:enter="enter"
+  v-on:after-enter="afterEnter"
+  v-on:enter-cancelled="enterCancelled"
+  v-on:before-leave="beforeLeave"
+  v-on:leave="leave"
+  v-on:after-leave="afterLeave"
+  v-on:leave-cancelled="leaveCancelled"
 >
-  
-上面四个是入场的动画生命周期函数；
-后面四个是出场的动画生命周期函数；
+  上面四个是入场的动画生命周期函数； 后面四个是出场的动画生命周期函数；
 </transition>
 ```
 
-
 当只用 JavaScript 过渡的时候，在 enter 和 leave 中必须使用 done 进行回调。否则，它们将被同步调用，过渡会立即完成。
+
 ```js
 methods: {
   // --------
@@ -146,7 +148,7 @@ methods: {
   // 回调函数 done 是可选的
   enter: function (el, done) {//此时的done其实就是afterEnter函数的引用
     // ...    // 当需要的操作完成之后，就会自动去调用done()，也就是立即调用 afterEnter函数；
-    done()     
+    done()
   },
   afterEnter: function (el) {
     // ...
@@ -155,20 +157,22 @@ methods: {
     // ...
   },
 ```
+
 ### 8.4 列表过渡
 
 **8.4.1 transition-group**
 
-在实现列表过渡的时候，如果需要过渡的元素是通过 v-for 循环渲染出来，不能使用 transition 包裹，需要使用 <transition-group> 
+在实现列表过渡的时候，如果需要过渡的元素是通过 v-for 循环渲染出来，不能使用 transition 包裹，需要使用 <transition-group>
 
 特点：
-+ 不同于 <transition>，它会以一个真实元素呈现：默认为一个 <span>。你也可以通过 tag 特性更换为其他元素。
-+ 过渡模式不可用，因为我们不再相互切换特有的元素。
-+ 内部元素 总是需要 提供唯一的 key 属性值。
-+ CSS 过渡的类将会应用在内部的元素中，而不是这个组/容器本身。
+
+- 不同于 <transition>，它会以一个真实元素呈现：默认为一个 <span>。你也可以通过 tag 特性更换为其他元素。
+- 过渡模式不可用，因为我们不再相互切换特有的元素。
+- 内部元素 总是需要 提供唯一的 key 属性值。
+- CSS 过渡的类将会应用在内部的元素中，而不是这个组/容器本身。
 
 具体案例可以看官方文档，说的比较详细。
 
 **8.4.2 appear**
 
-给transition-group添加 appear
+给 transition-group 添加 appear

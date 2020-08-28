@@ -1,6 +1,7 @@
-## 一 JavaScript弱类型
+## 一 JavaScript 弱类型
 
-JavaScript是一种弱类型的动态语言：
+JavaScript 是一种弱类型的动态语言：
+
 ```
 弱类型与强类型：
     弱类型：变量的数据类型不固定，可以为其赋值任何类型的值。
@@ -13,31 +14,36 @@ JavaScript是一种弱类型的动态语言：
 ```
 
 动态类型很容易造成一个现象，即代码错误不易被捕捉到：
+
 ```js
 // 该函数参数数据类型并未限制，可以任意传递 对象、字符串、undefined，产生的结果也会千奇百怪
-function add(num){
-    return num + 1;
+function add(num) {
+  return num + 1;
 }
 ```
-静态类型的语言在函数定义时会要求num必须是整数或者小数等，在书写代码阶段（其实就是编译：开发工具帮助提前编译），一旦出现非法参数，直接报错，无法通过编译，可以大大降低低级错误，而且动态类型语言在开发工具中也不能获得很好的代码提示。
+
+静态类型的语言在函数定义时会要求 num 必须是整数或者小数等，在书写代码阶段（其实就是编译：开发工具帮助提前编译），一旦出现非法参数，直接报错，无法通过编译，可以大大降低低级错误，而且动态类型语言在开发工具中也不能获得很好的代码提示。
+
 ```c
 // 这是C语言中的一个函数
 int add(int num) {
     return num + 1
 }
-```  
+```
 
-所以弱类型的语言往往不适合大型项目的开发与协作，有这样一句经典的话来形容：动态一时爽，重构火葬场。  
+所以弱类型的语言往往不适合大型项目的开发与协作，有这样一句经典的话来形容：动态一时爽，重构火葬场。
 
-为了解决该问题，JavaScript涌现了许多类型检查机制，常见的有：
-- Flow：Facebook推出的JavaScript静态类型检查工具，已渐渐式微
-- TypeScript：微软推出的编程语言，是JavaScript的超集，当前热度如日中天。 
+为了解决该问题，JavaScript 涌现了许多类型检查机制，常见的有：
 
-## 二 TypeScript初识
+- Flow：Facebook 推出的 JavaScript 静态类型检查工具，已渐渐式微
+- TypeScript：微软推出的编程语言，是 JavaScript 的超集，当前热度如日中天。
 
-TypeScript是JavaScript的超集，遵循ES6与ES5规范，扩展了原生JS语法，适合开发大型企业项目。  
+## 二 TypeScript 初识
+
+TypeScript 是 JavaScript 的超集，遵循 ES6 与 ES5 规范，扩展了原生 JS 语法，适合开发大型企业项目。
 
 环境配置：
+
 ```
 # 安装typescript
 npm install -g typescript
@@ -47,18 +53,15 @@ tsc --version
 ```
 
 helloworld 案例：
+
 ```ts
 //新建一个 hello.ts
 export class Hello {
-    run() {
-        console.log("hello world!");
-    }
+  run() {
+    console.log("hello world!");
+  }
 }
-(new Hello()).run();
+new Hello().run();
 ```
 
-
-
-
-## 三 
-
+## 三

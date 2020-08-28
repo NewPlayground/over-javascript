@@ -1,12 +1,13 @@
 ## 一 websocket
 
-### 1.1 websocket简介
+### 1.1 websocket 简介
 
-WebSocket可以看做是HTTP协议的升级版，也是基于TCP协议的应用层协议，弥补了HTTP协议无状态等缺陷，且提供了客户端和服务器之间双工通信机制。
- 
-### 1.2 使用io.socket
+WebSocket 可以看做是 HTTP 协议的升级版，也是基于 TCP 协议的应用层协议，弥补了 HTTP 协议无状态等缺陷，且提供了客户端和服务器之间双工通信机制。
 
-使用 npm install socket.io安装该第三方模块，且该模块需要与http模块配合使用（原因见原理）。
+### 1.2 使用 io.socket
+
+使用 npm install socket.io 安装该第三方模块，且该模块需要与 http 模块配合使用（原因见原理）。
+
 ```
 //客户端支持：
 sock.on(‘connect’)
@@ -15,7 +16,9 @@ sock.on(‘disconnect’)
 sock.on(‘connection’)
 sock.on(‘disconnect’)
 ```
+
 ### 1.3 客户端代码
+
 ```Html
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +93,9 @@ sock.on(‘disconnect’)
 </body>
 </html>
 ```
+
 ### 1.4 服务端代码
+
 ```JavaScript
 const http = require('http');
 const io = require('socket.io');
@@ -128,12 +133,14 @@ ws.on('connection',sock=>{
 
 });
 ```
-## 二 原生websocket
+
+## 二 原生 websocket
 
 ### 2.1 简介
 
-websocket其实是前端H5的内容，Node等后台是自带socket服务的，而Node本身的socket很底层，在上述案例中使用了第三方包io.socket来处理。
-使用源生net包来处理socket，得到的数据经过打印是：
+websocket 其实是前端 H5 的内容，Node 等后台是自带 socket 服务的，而 Node 本身的 socket 很底层，在上述案例中使用了第三方包 io.socket 来处理。
+使用源生 net 包来处理 socket，得到的数据经过打印是：
+
 ```
 GET / HTTP/1.1
 Host: localhost:8000
@@ -150,6 +157,7 @@ Cookie: _ga=GA1.1.574841553.1517937000; Webstorm-63f64cd9=acfa6107-17dd-497f-85f
 Sec-WebSocket-Key: Z6eN3mB4Ip+FHChXL+jQ+g==
 Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
 ```
+
 我们需要对该数据进行解析：每行数据都是以 : + 空格形式 存在的键值对
 
 ### 2.2 服务端代码
@@ -223,35 +231,38 @@ net.createServer(sock=>{    //使用http接收会拒绝
 ```
 
 ### 2.3 客户端代码
+
 ```html
 <script>
-    let sock = new WebSocket('ws://localhost:8000');
+  let sock = new WebSocket("ws://localhost:8000");
 
-    //模仿socket.io手工封装一个emit方法
-    sock.emit = function (name,...args) {
-        console.log('发送了：' + JSON.stringify({name,data:[...args]}));
-        sock.send(JSON.stringify({name,data:[...args]}));
-    };
-    //已经连接
-    sock.onopen = function () {
-        console.log('连接上了');
-        sock.emit('msg',12,5);
-    };
-    
-    //发现数据传输
-    sock.onmessage = function () {
-        console.log('有数据传输');
-    };
-    
-    //断开连接
-    sock.onclose = function () {
-        console.log('断开连接');
-    };
+  //模仿socket.io手工封装一个emit方法
+  sock.emit = function (name, ...args) {
+    console.log("发送了：" + JSON.stringify({ name, data: [...args] }));
+    sock.send(JSON.stringify({ name, data: [...args] }));
+  };
+  //已经连接
+  sock.onopen = function () {
+    console.log("连接上了");
+    sock.emit("msg", 12, 5);
+  };
+
+  //发现数据传输
+  sock.onmessage = function () {
+    console.log("有数据传输");
+  };
+
+  //断开连接
+  sock.onclose = function () {
+    console.log("断开连接");
+  };
 </script>
 ```
 
 ### 2.4 数据帧解析数据
-计算机的数据都是由位构成的，1个位占据8。
+
+计算机的数据都是由位构成的，1 个位占据 8。
+
 ```
  0位        1位        2位        3位
  0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7

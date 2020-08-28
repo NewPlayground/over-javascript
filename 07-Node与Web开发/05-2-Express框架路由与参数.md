@@ -1,4 +1,4 @@
-## 一 Express路由
+## 一 Express 路由
 
 ### 1.1 路由展示
 
@@ -25,20 +25,24 @@ app.get("/teacher/:gonghao",function(req,res){
 app.listen(3000);
 
 ```
-注意：express使用res.set和res.status取代了原生的res.writeHead()
 
-### 1.2 常见路由API
+注意：express 使用 res.set 和 res.status 取代了原生的 res.writeHead()
+
+### 1.2 常见路由 API
 
 ```js
-app.get("网址",function(req,res){	});      //get请求
-app.post("网址",function(req,res){  });   //post请求
-app.all("网址",function(){  });          //处理这个网址的任何类型请求
+app.get("网址", function (req, res) {}); //get请求
+app.post("网址", function (req, res) {}); //post请求
+app.all("网址", function () {}); //处理这个网址的任何类型请求
 ```
-注意：
-- 所有的GET参数，? 后面的都已经被忽略，锚点#也被忽略，路由到/a ， 实际/a?id=2&sex=nan 也能被处理；  
-- 正则表达式中，未知部分用圆括号分组，然后可以用req.params[0]、[1]得到，req.params是一个类数组对象。
 
-如果get、post回调函数中，没有next参数，那么就匹配上第一个路由，就不会往下匹配了。如果想往下匹配的话，那么需要写next()：
+注意：
+
+- 所有的 GET 参数，? 后面的都已经被忽略，锚点#也被忽略，路由到/a ， 实际/a?id=2&sex=nan 也能被处理；
+- 正则表达式中，未知部分用圆括号分组，然后可以用 req.params[0]、[1]得到，req.params 是一个类数组对象。
+
+如果 get、post 回调函数中，没有 next 参数，那么就匹配上第一个路由，就不会往下匹配了。如果想往下匹配的话，那么需要写 next()：
+
 ```JavaScript
 app.get("/",function(req,res,next){
     console.log("1");
@@ -52,11 +56,12 @@ app.get("/",function(req,res){
 
 ### 1.3 参数获取
 
-GET请求的参数在URL中，在原生Node中，需要使用url模块来识别参数字符串。在Express中，不需要使用url模块了。可以直接使用req.query对象。  
+GET 请求的参数在 URL 中，在原生 Node 中，需要使用 url 模块来识别参数字符串。在 Express 中，不需要使用 url 模块了。可以直接使用 req.query 对象。
 
-POST请求的参数在express中不能直接获得，必须使用body-parser模块。使用后，将可以用req.body得到参数。但是如果表单中含有文件上传，那么还是需要使用formidable模块。  
+POST 请求的参数在 express 中不能直接获得，必须使用 body-parser 模块。使用后，将可以用 req.body 得到参数。但是如果表单中含有文件上传，那么还是需要使用 formidable 模块。
 
 冒号参数引起的路由问题：
+
 ```JavaScript
 app.get("/:username/:id",function(req,res){    //express推荐使用冒号获得参数
     console.log("1");
@@ -70,7 +75,8 @@ app.get("/admin/login",function(req,res){
 
 ```
 
-上面两个路由，感觉没有关系,但是实际上冲突了，因为admin可以当做用户名 login可以当做id。
+上面两个路由，感觉没有关系,但是实际上冲突了，因为 admin 可以当做用户名 login 可以当做 id。
+
 ```JavaScript
 //解决方法1 交换位置。 也就是说，express中所有的路由（中间件）的顺序至关重要，匹配上第一个，就不会往下匹配了。 具体的往上写，抽象的往下写。
 app.get("/admin/login",function(req,res){
@@ -83,7 +89,7 @@ app.get("/:username/:id",function(req,res){
     res.send("用户信息" + req.params.username);
 });
 
-//解决方法2： 
+//解决方法2：
 app.get("/:username/:id",function(req,res,next){
     let username = req.params.username;
     //检索数据库，如果username不存在，那么next()
@@ -102,6 +108,7 @@ app.get("/admin/login",function(req,res){
 ```
 
 ### 1.4 错误处理与端口设置
+
 ```JavaScript
 
 const express = require('express');

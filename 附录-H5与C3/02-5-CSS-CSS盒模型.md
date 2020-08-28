@@ -3,44 +3,50 @@
 ### 1.0 盒模型简介
 
 盒模型主要用来网页布局，如图所示蓝色区块为真正显示的内容，但是内容是由盒子来包裹的：
-![](/images/CSS/css-02.png)  
+![](/images/CSS/css-02.png)
 
 如上所示，盒子由四部分组成：
+
 - 内容：包括文字、图片等，真正显示给用户观看的部分
 - 边框(border)：即盒子的厚度
 - 内边距（padding）：内容与边框的距离
 - 外边距（margin）：盒子与盒子之间的距离
 
-### 1.1 边框border
+### 1.1 边框 border
 
 常见边框属性：
+
 - border-width：边框宽度
-- border-style：边框样式，默认为none，表示没有样式，此外还有solid（实线）/dotted（点线）/dashed（虚线）
+- border-style：边框样式，默认为 none，表示没有样式，此外还有 solid（实线）/dotted（点线）/dashed（虚线）
 - border-color：边框颜色
 
-border书写方式：
-- 只写边框的一边：`border-left: 1px solid green;`
-- 只写边框的一边的一个属性：`border-top-color:green;`	
-- 属性联写：`border: solid 1px red;`，border属性联写没有先后顺序限制，边框颜色、宽度可以不写。
+border 书写方式：
 
-border的实战：
+- 只写边框的一边：`border-left: 1px solid green;`
+- 只写边框的一边的一个属性：`border-top-color:green;`
+- 属性联写：`border: solid 1px red;`，border 属性联写没有先后顺序限制，边框颜色、宽度可以不写。
+
+border 的实战：
+
 ```css
 .div {
-    /* 只有少数边框要设计时，往往先将所有边框样式清空 */
-    border: none;           
-    border-botto,: 1px dashed red;
+  /* 只有少数边框要设计时，往往先将所有边框样式清空 */
+  border: none;
+  border-botto,: 1px dashed red;
 }
 ```
 
 ### 1.2 内边距 padding
 
 内边距设置内容距离盒子边框之间的距离：
+
 - padding-left:左边距
 - padding-right:右边距
 - padding-top:上边距
 - padding-bottom:下边距
 
 属性联写：
+
 ```
 padding: 10px;                  上，右，下，左的距离为10px
 padding: 10px 20px;             上下10px，左右20px
@@ -48,67 +54,68 @@ padding: 10px 20px 30px;        上10px  左右20px   下30px
 padding: 10px 20px 30px 40px;   上， 右 ， 下， 左
 ```
 
-示例：制作导航时，由于导航内容往往是不固定的，不能直接设置宽度，需要由padding撑开：
+示例：制作导航时，由于导航内容往往是不固定的，不能直接设置宽度，需要由 padding 撑开：
+
 ```css
 .nav {
-    height: 41px;
-    border-top: 3px solid #FF8500;
-    border-bottom: 3px solid #EDEEF0;
+  height: 41px;
+  border-top: 3px solid #ff8500;
+  border-bottom: 3px solid #edeef0;
 }
 
 .nav a {
-    display: inline-block;
-    height: 41px;
-    /* 不能给宽度，因为内容的大小不一，必须使用padding撑开 */
-    padding: 0 20px;
-    line-height: 41px;
+  display: inline-block;
+  height: 41px;
+  /* 不能给宽度，因为内容的大小不一，必须使用padding撑开 */
+  padding: 0 20px;
+  line-height: 41px;
 }
 ```
 
-**注意**：如果没有给一个盒子指定宽度，盒子的padding不会撑开盒子！！！如下所示：
+**注意**：如果没有给一个盒子指定宽度，盒子的 padding 不会撑开盒子！！！如下所示：
+
 ```css
-    <div class="div">
-        <p>aaa</p>
-    </div>
+<div class="div" > <p > aaa</p > </div > .div {
+  height: 100px;
+  width: 100px;
+  background-color: pink;
+}
 
-    .div {
-        height: 100px;
-        width: 100px;
-        background-color: pink;
-    }
-
-    .div p {    /* p 没有给定宽度，padding生效了，但是并不会撑开盒子！ */
-        padding-left: 30px;
-        background-color: powderblue;
-    }
+.div p {
+  /* p 没有给定宽度，padding生效了，但是并不会撑开盒子！ */
+  padding-left: 30px;
+  background-color: powderblue;
+}
 ```
 
 ### 1.3 外边距 margin
 
-外边距设置盒子与盒子之间的距离，属性同padding。  
+外边距设置盒子与盒子之间的距离，属性同 padding。
 
 注意：
+
 - 当两个盒子垂直显示的时候，外边距以最大的一个值为准
-- 行内元素只有左右margin，没有上下margin，同理也只有左右padding，没有上下padding。为了照顾不同元素的兼容性，行内元素尽量只设置左右内外边距，无需设置上下内外边距（在Chrome中不生效，在低版本IE中会生效）
+- 行内元素只有左右 margin，没有上下 margin，同理也只有左右 padding，没有上下 padding。为了照顾不同元素的兼容性，行内元素尽量只设置左右内外边距，无需设置上下内外边距（在 Chrome 中不生效，在低版本 IE 中会生效）
 
 ## 二 盒子大小计算
 
 公式：
+
 ```
 盒子实际宽度 = 内容宽度 + 左右边框宽度 + 左右内边距大小
 ```
 
-子盒子在父盒子宽度范围内，父盒子的padding不会影响子盒子大小。  
+子盒子在父盒子宽度范围内，父盒子的 padding 不会影响子盒子大小。
 
 如果给盒子设置了内边距，为了维持盒子的原有大小，就需要将内容宽度或者高度减去相应的值
 
 ## 三 清除盒子的内外边距
 
-浏览器往往有自己自带的margin、padding设置，为了通用，需要将浏览器自带的margin清除：
+浏览器往往有自己自带的 margin、padding 设置，为了通用，需要将浏览器自带的 margin 清除：
+
 ```css
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 ```
-
