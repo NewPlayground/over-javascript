@@ -91,9 +91,6 @@ app.on("ready", function () {
   // 加载初始界面
   mainWindow.loadFile("./index.html");
 
-  // 打开开发者工具。
-  mainWindow.webContents.openDevTools();
-
   // 关闭窗口
   mainWindow.on("closed", () => {
     mainWindow = null;
