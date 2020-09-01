@@ -103,13 +103,13 @@ Electron：
 - [《Electron 跨平台开发实战》](https://book.douban.com/subject/34838092/)
 - [《Electron 实战：入门、进阶与性能优化》](https://book.douban.com/subject/35069275/)
 
-
 ## 附
 
-**OverNote**地址：https://github.com/overnote    
-**笔者的地址**：https://github.com/ruyuejun  
+**OverNote**地址：https://github.com/overnote  
+**笔者的地址**：https://github.com/ruyuejun
 
-**OverNote分类**：  
+**OverNote 分类**：
+
 - [Golang](https://github.com/overnote/over-golang)：详尽的 Go 领域笔记：Go 语法、Go 并发编程、GoWeb 编程、Go 微服务等
 - [大前端](https://github.com/overnote/over-javascript)：包含 JavaScript、Node.js、vue/react、微信开发、Flutter 等大前端技术
 - [数据结构与算法](https://github.com/overnote/over-algorithm)：以 C/Go 实现为主记录数据结构与算法的笔记
