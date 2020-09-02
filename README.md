@@ -93,6 +93,9 @@ React:
 
 ### Node 书籍
 
+笔者认为入门 Node 直接看本笔记的 [06-Node 基础模块](https://github.com/overnote/over-javascript/tree/master/06-Node%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9D%97)即可，接下来可以看：
+
+- [《Koa 与 Node.js 开发实战》](https://book.douban.com/subject/30404722/)：可以作为 Node 的 Web 开发的入门
 - [《深入浅出 Node.js》](https://book.douban.com/subject/25768396/)：Node 书籍的集大成者，虽然一部分内容已过时，但仍然值得精读
 - [《Node.js:来一打 C++扩展》](https://book.douban.com/subject/30247892/)：窥探 Node 底层的好书
 
