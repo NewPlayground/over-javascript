@@ -82,7 +82,10 @@ npm config set registry=http://registry.npmjs.org
 
 ## 二 描述文件
 
-在使用 `npm init`时会生成一个包描述文件 `package.json`，该描述文件详细解释了整个包的情况。
+在使用 `npm init`时会生成一个包描述文件 `package.json`，该描述文件详细解释了整个包的情况。  
+
+TODO：npx/npm run
+TODO：package-lock.json(保存当前项目安装的依赖版本等，下次安装的时候会依据该版本进行安装)
 
 ## 三 搭建局域NPM仓库
 
