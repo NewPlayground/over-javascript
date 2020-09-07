@@ -1,3 +1,5 @@
+# Electron 进程
+
 ## 一 Electron 中的主进程与渲染进程
 
 在 HelloWorld 示例中，`electron .` 的入口文件是 `main.js` 文件中的代码，即启动了一个进程，并且执行该代码，创建了窗口、加载了`index.html`，而`index.html`中的代码则会运行在 Electron 的渲染进程中。
@@ -14,11 +16,12 @@
 
 Electron 中模块的归属：
 
-```
-主进程模块：    app、BrowserView、autoUpdater、contentTracing、dialog、gloablShortcut、ipcMainMenu、MenuItem、
-              net、netLog、Notification、powerMonitor、powerSaveBlocker、protocol、screen、session、systemPreferences、TouchBar、Tray、webContents
-渲染进程模块：   desktopCapturer。ipcRenderer、remote、webFrame
-公用模块：      clipboard、crashReporter、nativeImage、shell
+```html
+主进程模块：
+app、BrowserView、autoUpdater、contentTracing、dialog、gloablShortcut、ipcMainMenu、MenuItem、
+net、netLog、Notification、powerMonitor、powerSaveBlocker、protocol、screen、session、systemPreferences、TouchBar、Tray、webContents
+渲染进程模块： desktopCapturer。ipcRenderer、remote、webFrame 公用模块：
+clipboard、crashReporter、nativeImage、shell
 ```
 
 ## 二 进程调试
@@ -54,20 +57,19 @@ Electron 中模块的归属：
 
 配置解释：
 
-```
-name：用于识别启动项目
-type：调试环境，这里是Node
+```html
+name：用于识别启动项目 type：调试环境，这里是Node
 runtimeExecutable：指向批处理文件，用于启动Electron
 ${workspaceRoot}：正在进行调试的程序的工作目录的绝对路径
 args：启动参数，这里简写为 . ，其实是 index.js
 ```
 
 配置完毕后，设置一个端点，在 debug 界面，即可点击绿色三角开始调试，如图所示：  
-![](../images/electron/01.png)
+![electron debug 1](../images/electron/01.png)
 
 调试结果如图所示，鼠标移入对象时，可以显示其属性，也可以在底部的调试栏中输入对象（示例中是 mainWindow）：
 
-![](../images/electron/02.png)
+![electron debug 2](../images/electron/02.png)
 
 ### 2.2 调试渲染进程
 

@@ -1,8 +1,10 @@
+# Electron 初识
+
 ## 一 Electron 简介
 
 桌面客户端开发常用的库是：QT、GTK、MFC，他们都是基于 C++开发的，开发效率较低，虽然现在也有基于 Go、Py 的 QT，但是仍然存在一定的缺陷。
 
-2011 年，中古英特尔的王文睿开发了 node-webkit 库，用来操作 Webkit，后开该项目失败，却衍生出了跨平台开发框架 NW.js，node-webkit 团队成员赵成到了 Github 团队后开发出了类 node-webkit 项目： Atom Shell，即 Electron 的前身。
+2011 年，中国英特尔的王文睿开发了 node-webkit 库，用来操作 Webkit，后开该项目失败，却衍生出了跨平台开发框架 NW.js，node-webkit 团队成员赵成到了 Github 团队后开发出了类 node-webkit 项目： Atom Shell，即 Electron 的前身。
 
 NW.js 与 Electron 都是基于 Node、Webkit 这 2 种技术的跨平台（Win、Mac、Linux）桌面应用开发框架，通过该框架可以利用 HTML、CSS、JavaScript 等 web 前端技术来开发跨平台桌面应用，其理念是将 Chromium、Node 进行结合：
 
@@ -175,3 +177,62 @@ npm install && npm start
 ## 四 Electron Electron API
 
 Electron API 项目集成了大量官方的 API 演示案例，[网址](https://github.com/electron/electron-api-demos)为：https://github.com/electron/electron-api-demos
+
+## 五 Electron 集成现代框架
+
+### 5.1 Electron 集成 Vue
+
+Vue 集成 Electron，不需要使用示例项目，其 cli 工具直接支持：
+
+```
+# 安装vue cli 工具
+npm i @vue/cli -g
+
+# 创建项目
+vue create project
+
+# 进入项目后，集成electron。下列命令容易因为网络原因卡住，可以切换源，或者使用 yarn -add -D electron-chromedriver
+vue add electron-builder        # 此命令添加的 src/background.js是主进程入口程序，src/main.js 是渲染进程入口程序
+
+# 启动
+npm run electron:serve
+```
+
+bug 解决：此时国内环境是无法直接启动的，是因为要安装 dev-tools，这个需要翻墙，可以暂时注释
+
+```js
+// 注释掉src / background.js中的以下代码就行了;
+// if (isDevelopment && !process.env.IS_TEST) {
+//   // Install Vue Devtools
+//   try {
+//     await installVueDevtools();
+//   } catch (e) {
+//     console.error("Vue Devtools failed to install:", e.toString());
+//   }
+// }
+```
+
+其他 bug 解决：https://www.psvmc.cn/article/2019-11-05-vue-cli3-electron.html
+
+### 5.2 Electron 与 vue-element-admin 的集成示例
+
+该示例可以直接启动，在 .vscode 目录中创建了调试工具环境：
+https://github.com/ruyuejun/cli-electron-vue-admin
+
+### 5.3 Electron 集成 React
+
+目前较为活跃的集成示例是：https://github.com/electron-react-boilerplate/electron-react-boilerplate
+
+当然为了规避 Electron 打包体积大，提升性能，推荐使用：ProtonNative(https://github.com/kusti8/proton-native)，该项目优点：
+
+- 与 ReactNative 语法一直，可以使用 React 生态，如 Redux
+- 也可以使用 Node.js 生态中的包
+- 组件为系统原生组件，不再是浏览器
+
+### 5.4 Electron 集成 Angular
+
+目前较为活跃的集成示例是：https://github.com/maximegris/angular-electron
+
+### 5.5 Electron 集成 Webpack
+
+很少用到单独集成 Webpack 的项目，为了以防万一，直接按照该示例操作即可：https://github.com/ruyuejun/cli-electron-webpack
