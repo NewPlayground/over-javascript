@@ -1,4 +1,8 @@
-## 一 fetch
+## 一 Ajax2.0 的表单提交
+
+## 二 Ajax2.0 的跨域
+
+## 三 fetch
 
 fetch 是 W3C 最新的标准网络 API，因为 XMLHttpRequest 其实是一个设计粗糙的 API，但是 fetch 在很多浏览器中支持度较低。
 
@@ -17,3 +21,5 @@ fetch(cur, {
   credentials: "include",
 });
 ```
+
+## Axios

@@ -1,3 +1,5 @@
+# README
+
 ## 关于本笔记
 
 overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观看视频后整理出来的一套体系化的笔记，着重将一个整套知识体系由浅入深的记录下来，并做适当的横向扩展。
@@ -6,7 +8,7 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 为何是笔记形式，而不是独立博客形式？
 
-```
+```html
 笔者引用并优化、扩展了很多优秀书籍内容。若不按目录主次写好，直接将这样的内容放在独立博客上，笔者认为是互联网的垃圾碎片
 
 独立博客的内容目录极度不清晰，久而久之只能成为一个自己也不会问津的垃圾收集器。如果在平时学习中，学到了某个知识点，比如深入了解了闭包的用法，可以把心得通过git版本控制记录到笔记目录中对应的闭包章节，便于查找，而不是去博客上再次发一篇闭包文章，最终石沉大海。这样坚持下来，笔记就能越来越由浅入深，变得丰富。
@@ -108,8 +110,8 @@ Electron：
 
 ## 附
 
-**OverNote**地址：https://github.com/overnote  
-**笔者的地址**：https://github.com/ruyuejun
+**OverNote**地址：<https://github.com/overnote>  
+**笔者的地址**：<https://github.com/ruyuejun>
 
 **OverNote 分类**：
 
@@ -120,4 +122,4 @@ Electron：
 - [Python 与机器学习](https://github.com/overnote/over-python)：Python 相关笔记，完善中
 - [Linux](https://github.com/overnote/over-linux)：计算机组成原理、操作系统、计算机网络、编译原理基础学科笔记
 - [大数据](https://github.com/overnote/over-bigdata)：大数据笔记，完善中
-- [flutter](https://github.com/overnote/over-flutter)
+- [Flutter](https://github.com/overnote/over-flutter)：完善中
