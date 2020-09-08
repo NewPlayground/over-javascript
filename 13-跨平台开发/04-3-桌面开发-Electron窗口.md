@@ -235,6 +235,14 @@ currentWin.on("close", (e) => {
 });
 ```
 
+注意：使用 onbeforeunload 事件方式来实现阻止窗口关闭时，如果 Electron 加载了一个注册了 onbeforeunload 事件的第三方网页，则该窗口无法关闭！这时候可以监听 webContents 的 `will-prevent-unload` 事件：
+
+```js
+win.webContents.on("will-prevent-unload", (event) => {
+  event.preventDefault();
+});
+```
+
 ## 三 窗口使用的注意点
 
 ### 3.1 多窗口资源竞争
@@ -291,7 +299,7 @@ app.on("activate", () => {
 });
 ```
 
-Mac 下还有 DarkMode，可以通过如下方式获取系统是否处于深色模式：
+Mac 下还有 DarkMode，可以通过如下方式获取系统是否处于深色模式(这是主进程中只读的属性)：
 
 ```js
 // 6.X及之前，已废弃

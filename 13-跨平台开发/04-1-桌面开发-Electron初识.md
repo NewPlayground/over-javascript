@@ -43,7 +43,7 @@ Electron 也有一些竞争者，不乏理念上不同的开发方式，如 PWA�
 
 安装 Electron 需要确保电脑上已经安装 Node.js，最好是 8 版本以上
 
-```
+```txt
 # 由于国内环境，偶尔需要设置electron的代理
 npm config set ELECTRON_MIRROR https://cdn.npm.taobao.org/dist/electron/
 
@@ -59,7 +59,7 @@ npm i electron -g
 
 第一步：初始化一个项目：
 
-```
+```txt
 # 初始化项目
 npm init
 
@@ -116,7 +116,7 @@ app.on("window-all-closed", () => {
 
 在 index.html 中可以像普通的前端开发一样，直接使用 script 脚本引入其他的 js 文件即可：
 
-```txt
+```html
 <!-- 在根本目创建一个lib.js，内容如下：  -->
 window.data = { key: 'value' }
 
@@ -148,7 +148,7 @@ module.exports = {
 
 此时其他的 js 文件在 index.html 就可以使用如下方式引入：
 
-```txt
+```html
 <script>
   let data = require("./lib");
   alert(data.key);
@@ -180,10 +180,17 @@ Electron API 项目集成了大量官方的 API 演示案例，[网址](https://
 Vue 集成 Electron，不需要使用示例项目，其 cli 工具直接支持：
 
 ```txt
-# 安装vue cli 工具 npm i @vue/cli -g # 创建项目 vue create project #
-进入项目后，集成electron。下列命令容易因为网络原因卡住，可以切换源，或者使用
-yarn -add -D electron-chromedriver vue add electron-builder # 此命令添加的
-src/background.js是主进程入口程序，src/main.js 是渲染进程入口程序 # 启动 npm run
+# 安装vue cli 工具
+npm i @vue/cli -g
+
+# 创建项目
+vue create project
+
+#进入项目后，集成electron。
+# 下列命令容易因为网络原因卡住，可以切换源，或者使用 yarn -add -D electron-chromedriver
+vue add electron-builder  # 此命令添加的src/background.js是主进程入口程序，src/main.js 是渲染进程入口程序
+
+# 启动 npm run
 electron:serve
 ```
 

@@ -17,11 +17,12 @@
 Electron 中模块的归属：
 
 ```txt
-主进程模块：
-app、BrowserView、autoUpdater、contentTracing、dialog、gloablShortcut、ipcMainMenu、MenuItem、
-net、netLog、Notification、powerMonitor、powerSaveBlocker、protocol、screen、session、systemPreferences、TouchBar、Tray、webContents
-渲染进程模块： desktopCapturer。ipcRenderer、remote、webFrame 公用模块：
-clipboard、crashReporter、nativeImage、shell
+主进程模块：  app、BrowserView、autoUpdater、contentTracing、dialog、gloablShortcut、ipcMainMenu、
+            MenuItem、net、netLog、Notification、powerMonitor、powerSaveBlocker、protocol、screen、session、systemPreferences、TouchBar、Tray、webContents
+
+渲染进程模块： desktopCapturer。ipcRenderer、remote、webFrame
+
+公用模块：    clipboard、crashReporter、nativeImage、shell
 ```
 
 ## 二 进程调试
@@ -58,10 +59,10 @@ clipboard、crashReporter、nativeImage、shell
 配置解释：
 
 ```txt
-name：用于识别启动项目 type：调试环境，这里是Node
-runtimeExecutable：指向批处理文件，用于启动Electron
-${workspaceRoot}：正在进行调试的程序的工作目录的绝对路径
-args：启动参数，这里简写为 . ，其实是 index.js
+name：              用于识别启动项目 type：调试环境，这里是Node
+runtimeExecutable： 指向批处理文件，用于启动Electron
+${workspaceRoot}：  正在进行调试的程序的工作目录的绝对路径
+args：              启动参数，这里简写为 . ，其实是 index.js
 ```
 
 配置完毕后，设置一个端点，在 debug 界面，即可点击绿色三角开始调试，如图所示：  
@@ -88,7 +89,7 @@ mainWindow.webContents.openDevTools();
 
 `index.html`中发送数据：
 
-```txt
+```html
 <button id="btn">操作</button>
 <script>
   const { ipcRenderer } = require("electron");
@@ -97,6 +98,8 @@ mainWindow.webContents.openDevTools();
   });
 </script>
 ```
+
+注意：**如果出现类似 fs. 错误，则使用 window.require() 即可**
 
 主进程 `main.js`中接收数据：
 
@@ -132,7 +135,7 @@ ipcMain.on("msg_renderUsers", (event, param1, param2) => {
 
 渲染进程中接收：
 
-```txt
+```html
 <button id="btn">操作</button>
 <script>
   const { ipcRenderer } = require("electron");
@@ -183,7 +186,7 @@ remote 模块可以帮助开发者在渲染进程中访问主进程对象。
 
 在`index.html`中增加如下代码：
 
-```txt
+```html
 <button id="openView">打开百度</button>
 <script>
   const { remote } = require("electron");
