@@ -130,6 +130,6 @@ test.js
 
 html 文件需要添加如下配置：
 
-```html
+```txt
 <html lmanifest="./offline.appcache"></html>
 ```

@@ -43,7 +43,7 @@ div {
 
 如下所示面试题：
 
-```html
+```txt
 <style>
   #father {
     color: red;

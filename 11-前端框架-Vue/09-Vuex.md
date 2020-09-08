@@ -45,7 +45,7 @@ export default store;
 
 在组件中使用：
 
-```html
+```txt
 <p>{{this.$store.state.num}}</p>
 ```
 
@@ -92,7 +92,7 @@ mutations：
 
 在组件中使用：
 
-```html
+```txt
 <template>
   <div id="app">
     <p>{{this.$store.state.num}}</p>
@@ -139,7 +139,7 @@ mutations 中传递参数的方式：
 
 组件中展示：
 
-```html
+```txt
 <template>
   <div id="app">
     <p>原始数据：{{this.$store.state.num}}</p>
@@ -202,7 +202,7 @@ actions 示例：
 
 组件中使用：
 
-```html
+```txt
 <template>
   <div id="app">
     <p>原始数据：{{this.$store.state.num}}</p>
@@ -242,7 +242,7 @@ actions 示例：
 
 组件中使用：
 
-```html
+```txt
 <p>{{this.$store.getters.getNum}}</p>
 ```
 
@@ -265,7 +265,7 @@ actions 示例：
 
 在组件中使用：
 
-```html
+```txt
 this.state.moduleA.num
 ```
 

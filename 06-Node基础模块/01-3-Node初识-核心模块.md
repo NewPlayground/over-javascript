@@ -4,7 +4,7 @@ Node 默认提供了许多模块，这些模块可以称呼为核心模块。模
 
 模块的操作 API 可以在官网文档中查阅，也可以在 REPL 中查阅：
 
-```html
+```txt
 # 进入 repl 环境
 node
 
@@ -12,25 +12,25 @@ node
 fs
 ```
 
-注意1：**对于大多模块中的异步操作，只能通过回调函数中的 err 来判断，而不同使用 try catch 来捕获！**
+注意 1：**对于大多模块中的异步操作，只能通过回调函数中的 err 来判断，而不同使用 try catch 来捕获！**
 
-注意2：Node 往往在提供异步 API 时，还会提供一个同步操作，如 `fs.readFile()` 对应的同步操作为：`fs.readFileSync()`。
+注意 2：Node 往往在提供异步 API 时，还会提供一个同步操作，如 `fs.readFile()` 对应的同步操作为：`fs.readFileSync()`。
 
 ## 一 fs 模块
 
 ### 1.0 fs 模块简介
 
-fs 模块即：文件模块，是Node的核心模块，提供了操作文件的一些API。
+fs 模块即：文件模块，是 Node 的核心模块，提供了操作文件的一些 API。
 
-API 地址：<http://nodejs.cn/api/fs.html>  
+API 地址：<http://nodejs.cn/api/fs.html>
 
-文件模块针对同一个业务提供了 异步、同步两种操作方式，比如读取文件：`readFile()、readFileSync()`。  
+文件模块针对同一个业务提供了 异步、同步两种操作方式，比如读取文件：`readFile()、readFileSync()`。
 
 ### 1.1 打开文件 open()
 
 该 API 用于打开文件，可以获取文件描述符：
 
-```html
+```txt
 调用格式：
     fs.open(path,flags,[mode],callback);
 参数介绍：
@@ -45,14 +45,14 @@ API 地址：<http://nodejs.cn/api/fs.html>
 案例：
 
 ```js
-const fs = require('fs');
+const fs = require("fs");
 
-fs.open('./1.html', 'r', function (err, fd) {
-    if (err) {
-        console.log('open file err:', err);
-    } else {
-        console.log("file's fd:", );    //输出 3
-    }
+fs.open("./1.html", "r", function (err, fd) {
+  if (err) {
+    console.log("open file err:", err);
+  } else {
+    console.log("file's fd:"); //输出 3
+  }
 });
 ```
 
@@ -60,7 +60,7 @@ fs.open('./1.html', 'r', function (err, fd) {
 
 该 API 用于读取文件，可以从一个特定文件描述符中读取数据：
 
-```html
+```txt
 调用格式:
     fs.read(fd,buffer,offset,length,position,callback);
 参数介绍：
@@ -75,25 +75,25 @@ fs.open('./1.html', 'r', function (err, fd) {
 案例：
 
 ```js
-const fs = require('fs');
+const fs = require("fs");
 
 //可选参数-字符集：{'charset':'utf8'}
-fs.readFile('./1.html', function (err, data) {
-    if (err) {
-            throw err;
-        }
-    // data是二进制Buffer格式，必须先转换
-    console.log(data.toString());
+fs.readFile("./1.html", function (err, data) {
+  if (err) {
+    throw err;
+  }
+  // data是二进制Buffer格式，必须先转换
+  console.log(data.toString());
 });
 ```
 
-注意：readFile会将一个文件的内容全部读取到内存中，只适用于体积较小的文本文件。
+注意：readFile 会将一个文件的内容全部读取到内存中，只适用于体积较小的文本文件。
 
 ### 1.3 写入文件 writeFile() appendFile()
 
-这2个API都可以实现异步地将数据写入一个文件，如果文件不存在则创建，如果文件存在，则替换。data参数可以是一个string，也可以是一个buffer：
+这 2 个 API 都可以实现异步地将数据写入一个文件，如果文件不存在则创建，如果文件存在，则替换。data 参数可以是一个 string，也可以是一个 buffer：
 
-```html
+```txt
 替换文件内的内容：
     fs.writeFile(filename,data,[options],callback);
 
@@ -105,7 +105,7 @@ fs.readFile('./1.html', function (err, data) {
 
 监听文件的变化：
 
-```html
+```txt
 调用格式:
     fs.wathc(filename,[options],[listener]);
 使用说明：
@@ -115,69 +115,69 @@ fs.readFile('./1.html', function (err, data) {
 示例：
 
 ```js
-const fs = require('fs');
+const fs = require("fs");
 
-fs.watch('./1.html', function (ev, fn) {
-    console.log(ev);
-    if (fn) {
-        console.log(fn + '发生了改变');
-    } else {
-        console.log('...');
-    }
+fs.watch("./1.html", function (ev, fn) {
+  console.log(ev);
+  if (fn) {
+    console.log(fn + "发生了改变");
+  } else {
+    console.log("...");
+  }
 });
 ```
 
 ## 二 path 模块
 
-API地址：<http://nodejs.cn/api/path.html>
+API 地址：<http://nodejs.cn/api/path.html>
 
-该模块用于处理路径中常见的问题，如拼接路径时候，需要考虑兼容不同系统的分隔符（win中的'\'，linux中的'/'），又比如 2 个路径在拼接时，需要考虑前一个路径末尾是否带分隔符。有了 path 模块，默认会处理这些问题：
+该模块用于处理路径中常见的问题，如拼接路径时候，需要考虑兼容不同系统的分隔符（win 中的'\'，linux 中的'/'），又比如 2 个路径在拼接时，需要考虑前一个路径末尾是否带分隔符。有了 path 模块，默认会处理这些问题：
 
 连接路径：
 
 ```js
-const path = require('path');
+const path = require("path");
 
 // 返回: '/foo/bar/baz/asdf'
-path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
+path.join("/foo", "bar", "baz/asdf", "quux", "..");
 
-let myurl = path.join(__dirname, 'username', '123');
-console.log(myurl);     //输出类似这样的绝对路径: /Test/username/123
+let myurl = path.join(__dirname, "username", "123");
+console.log(myurl); //输出类似这样的绝对路径: /Test/username/123
 ```
 
-__dirname 和 path.dirname 的区别:
+\_\_dirname 和 path.dirname 的区别:
 
 ```js
-console.log(__dirname);  // 指向被执行 js 文件的绝对路径,包含的有文件名称
-console.log(path.dirname('/abc/www/abc.txt'));  // 只有路径，没有文件名称
+console.log(__dirname); // 指向被执行 js 文件的绝对路径,包含的有文件名称
+console.log(path.dirname("/abc/www/abc.txt")); // 只有路径，没有文件名称
 ```
 
 获取路径的最后一部分：
 
 ```js
-path.basename('/foo/bar/aaa.html')              // 得到的结果是： aaa.html
+path.basename("/foo/bar/aaa.html"); // 得到的结果是： aaa.html
 
-path.basename('/foo/bar/aaa.html', '.html')     // 得到的结果是： aaa
+path.basename("/foo/bar/aaa.html", ".html"); // 得到的结果是： aaa
 ```
 
 获取扩展名:
 
 ```js
 // 如果后面只是个‘.’，那么得到的就是‘.’； 如果没有扩展名，得到的就是空
-path.extname('index.html')                      // 得到的结果： ‘.html’
+path.extname("index.html"); // 得到的结果： ‘.html’
 ```
 
 路径的格式化处理：
 
 ```js
-    let obj = {
-        root: 'd:\\',
-        base: 'abc.txt',
-        ext: '.txt',
-        name: 'abc'
-    }
+let obj = {
+  root: "d:\\",
+  base: "abc.txt",
+  ext: ".txt",
+  name: "abc",
+};
 
-    console.log(path.format(obj));       //  输出的结果：d:\abc.txt
+console.log(path.format(obj)); //  输出的结果：d:\abc.txt
 ```
 
 路径字符串转成对象
@@ -198,7 +198,7 @@ path.extname('index.html')                      // 得到的结果： ‘.html�
 
 URL 的组成如下：
 
-```html
+```txt
 ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                              href                                              │
 ├──────────┬──┬─────────────────────┬────────────────────────┬───────────────────────────┬───────┤
@@ -221,31 +221,33 @@ URL 的组成如下：
 Node 中 ulr 模块用来处理 URL 总的各个字段：
 
 ```js
-const url = require('url');
-const myURL = url.parse('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
+const url = require("url");
+const myURL = url.parse(
+  "https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash"
+);
 ```
 
 但是最新的 H5 标准组织已经提出了 URL 操作的标准，新版的 Node 也开始支持：
 
 ```js
-const myURL = new URL('https://%CF%80.example.com/foo');
+const myURL = new URL("https://%CF%80.example.com/foo");
 
 console.log(myURL.href);
 ```
 
 ## 四 querystring 模块
 
-该模块有2个主要方法：
+该模块有 2 个主要方法：
 
 - `querystring.parse()`：将查询字符串反序列化为一个对象，类似`JSON.parse()`
 - `querystring.stringify()`：将一个对象序列化为一个字符串对象，类似`JSON.stringify()`
 
 ```js
-const querstring = require('querystring');
+const querstring = require("querystring");
 
-let str1 = 'username=lisi&password=123';
-let obj1 = querstring.parse(str1);          //  转换为了对象
+let str1 = "username=lisi&password=123";
+let obj1 = querstring.parse(str1); //  转换为了对象
 
-let obj2 = {username: 'zs', password: '456'};
-let str2 = querstring.stringify(obj2);      //  重新转换为字符串
+let obj2 = { username: "zs", password: "456" };
+let str2 = querstring.stringify(obj2); //  重新转换为字符串
 ```

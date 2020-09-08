@@ -13,7 +13,7 @@ Vue 的组件化是指从 UI 界面角度出发，合理重用 UI 组件。
 
 ### 1.1 创建全局组件
 
-```html
+```txt
 <div id="app">
   <my-com1></my-com1>
   <!-- 驼峰需要使用-连接 -->
@@ -43,7 +43,7 @@ Vue 的组件化是指从 UI 界面角度出发，合理重用 UI 组件。
 
 ### 1.2 创建私有组件
 
-```html
+```txt
 <div id="app">
   <my-com3></my-com3>
 </div>
@@ -64,7 +64,7 @@ Vue 的组件化是指从 UI 界面角度出发，合理重用 UI 组件。
 
 template 属性也可以直接引用其他已经定义好的 template。
 
-```html
+```txt
 <div id="app">
   <my-com3></my-com3>
 </div>
@@ -88,7 +88,7 @@ template 属性也可以直接引用其他已经定义好的 template。
 
 除了可以使用自定义 true/false 方式来切换组件外，vue 本身也提供了组件切换机制：在 component 里展示对应名称的组件
 
-```html
+```txt
 <div id="app">
   <span @click="who='com1'">显示组件1</span>
   <span @click="who='com2'">显示组件2</span>
@@ -117,7 +117,7 @@ template 属性也可以直接引用其他已经定义好的 template。
 
 组件内也可以有 data 属性，但是该属性是个函数，且必须返回一个对象：
 
-```html
+```txt
 <div id="app">
   <my-com></my-com>
 </div>
@@ -150,7 +150,7 @@ template 属性也可以直接引用其他已经定义好的 template。
 - 第一步：父组件中使用 v-bind 绑定要传递的数据
 - 第二步：子组件在 props 属性中定义传递过来的数据
 
-```html
+```txt
 <div id="app">
   <father></father>
 </div>
@@ -161,10 +161,10 @@ template 属性也可以直接引用其他已经定义好的 template。
   // 定义父组件：将父组件数据 fatherMsg 绑定到了子组件属性 sonMsg 上，将父组件方法 fatherShow 绑定到子组件 sonClick上
   Vue.component("father", {
     // 父组件将数据绑定在子组件属性上
-    template: `                 
+    template: `
                 <div>
                     <p>父组件</p>
-                    <son :sonMsg="fatherMsg"></son>                     
+                    <son :sonMsg="fatherMsg"></son>
                 </div>`,
     data: function () {
       return {
@@ -205,7 +205,7 @@ data 与 props 对比：
 - 第一步：父组件中使用 v-on 绑定要传递的方法
 - 第二步：子组件在 methods 中使用 \$emit 来触发父组件方法
 
-```html
+```txt
 <div id="app">
   <father></father>
 </div>
@@ -216,10 +216,10 @@ data 与 props 对比：
   // 定义父组件：将父组件数据 fatherMsg 绑定到了子组件属性 sonMsg 上，将父组件方法 fatherShow 绑定到子组件 sonClick上
   Vue.component("father", {
     // 父组件将数据绑定在子组件属性上
-    template: `                 
+    template: `
                 <div>
                     <p>父组件</p>
-                    <son @sonClick="fatherShow"></son>                     
+                    <son @sonClick="fatherShow"></son>
                 </div>`,
     data: function () {
       return {
@@ -271,7 +271,7 @@ props: {
 
 ref 可以获取到原生节点：
 
-```html
+```txt
 <div id="app">
   <input type="text" ref="mytext" />
   <button @click="add">点击</button>
@@ -302,7 +302,7 @@ ref 通信方式需要在视图结构上添加 ref，不太推荐。
 
 Vue 为非父子关系组件提供了事件总线机制来实现通信。事件总线独立于所有组件之外，其本质就是一个空的 Vue 实例:
 
-```html
+```txt
 <div id="app">
   <publish></publish>
   <subcribe></subcribe>
@@ -317,7 +317,7 @@ Vue 为非父子关系组件提供了事件总线机制来实现通信。事件�
     template: `
                 <div>
                     <input type="text" />
-                    <button @click="handleClick()">发布</button>    
+                    <button @click="handleClick()">发布</button>
                 </div>`,
     methods: {
       handleClick() {
@@ -329,7 +329,7 @@ Vue 为非父子关系组件提供了事件总线机制来实现通信。事件�
   Vue.component("subcribe", {
     template: `
                 <div>
-                    数据为： 
+                    数据为：
                 </div>`,
     mounted() {
       // 这里让组件尽早的订阅总线消息

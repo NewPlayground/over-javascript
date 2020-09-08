@@ -5,11 +5,11 @@
 简单的 Web 服务器示例：
 
 ```js
-var http = require('http');
+var http = require("http");
 
 var server = http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain;charset=UTF8'});
-    res.end('hello world');
+  res.writeHead(200, { "Content-Type": "text/plain;charset=UTF8" });
+  res.end("hello world");
 });
 
 server.listen(8000);
@@ -17,9 +17,9 @@ server.listen(8000);
 
 以上简单的几行代码就能开启一个 web 服务，访问 <http://localhost:8000> ，即可看到页面输出 8000 端口。
 
-Node与传统的 web 开发最大的不同是，Node代码不需要 Web 容器来运行：
+Node 与传统的 web 开发最大的不同是，Node 代码不需要 Web 容器来运行：
 
-```html
+```txt
 Java：  Java开发的 Web 软件，需要先将源码打包为 war 包，然后将 war 包放置在其专用 web 服务器 Tomcat 中，由 Tomcat 来运行。
 Php：   Php开发的 Web 软件，需要将源码放置在其专用的 web 服务器 Apache 中，由 Apache 来运行。
 ```
@@ -41,21 +41,21 @@ http.Server 的主要事件有：
 http.createServer()方法其实就是添加了一个 Reuqest 事件监听，如下所示：
 
 ```js
-var http = require('http');
+var http = require("http");
 
 var server = http.createServer();
 
-server.on('error', function (err) {
-    console.log(err);
+server.on("error", function (err) {
+  console.log(err);
 });
 
-server.on('request', function (req, res) {
-    console.log('有用户请求了');
-    console.log(req);
+server.on("request", function (req, res) {
+  console.log("有用户请求了");
+  console.log(req);
 });
 
-server.listen(8081, function(){
-    console.log("server run...");
+server.listen(8081, function () {
+  console.log("server run...");
 });
 ```
 

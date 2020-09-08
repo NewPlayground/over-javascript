@@ -1,4 +1,4 @@
-# Node简介与安装
+# Node 简介与安装
 
 ## 一 Node 简介
 
@@ -7,23 +7,24 @@ Node.js 由 Ryan Dahl 于 2009 年发布，其最初的目的是为了基于高�
 我们之前在学习 JavaScript 的时候，都是基于浏览器而学习的。切记：EcmaScript 只是 JS 语言的标准，为编程语言提供语法准则，并未提供 API，类似`document`、`window`、`getElementById()`这些对象、函数不是 JavaScript 本身的能力，而是浏览器封装给我们使用的。这种额外封装了编程语言执行环境的进程级系统，我们称之为运行时。目前 JavaScript 常见的运行时环境：
 
 - 浏览器：封装了 DOM、BOM 等页面渲染相关的 API，JS 依赖于此可以操作浏览器上的元素等。其中 Chrome 浏览器底层解析 JS 的引擎是 V8。
-- Node：封装了文件、网络的 API，JS 依赖于此可以操作计算机中的文件、网络等。与 Chrome 浏览器相同，起解析 JS 的引擎也是 V8。  
+- Node：封装了文件、网络的 API，JS 依赖于此可以操作计算机中的文件、网络等。与 Chrome 浏览器相同，起解析 JS 的引擎也是 V8。
 
 Node 的出现很大程度上依赖于 V8 引擎，Chrome 浏览器内部解释引擎也是 V8，他们的共同点是都遵循 ECMAScript 的标准 ，下图是 Chrome 浏览器与 Node.js 的内核区别：
 
 ![Chrome与Node内核区别](../images/node/01-01.svg)
 
 综上所述，Node 的官网对 Node 的概述非常准确：
+
 > Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-> Node.js 是一个基于 Chrome 的  0i·1  V8 JavaScript 引擎 构建的 JavaScript 运行时。
+> Node.js 是一个基于 Chrome 的 0i·1 V8 JavaScript 引擎 构建的 JavaScript 运行时。
 
 当然，Node 的周边生态已经相当繁荣，类似 Java 平台，我们也可以将 Node 理解为一个开发平台：
 
-```html
+```txt
 开发平台：    Node            Java
 编程语言：    JavaScript      Java
 解析引擎：    V8              JVM
-包管理器：    NPM             Maven  
+包管理器：    NPM             Maven
 ```
 
 ## 二 Node 架构
@@ -54,7 +55,7 @@ console.log("after....");
 
 输出结果如下：
 
-```html
+```txt
 after...
 before...
 ```
@@ -82,7 +83,7 @@ Node 本身内部其实是有很多线程的，但与其他开发平台最大的
 
 ### 6.0 安装说明
 
-Node 只需要在官网下载对应安装包下一步下一步安装即可，**默认会配置环境变量**。下载界面有两个版本：长期支持版(LTS)、Current(最新版)，建议使用LTS版本，当然 Node 的版本号中偶数位版本一般为稳定版，奇数位版本一般为非稳定版。
+Node 只需要在官网下载对应安装包下一步下一步安装即可，**默认会配置环境变量**。下载界面有两个版本：长期支持版(LTS)、Current(最新版)，建议使用 LTS 版本，当然 Node 的版本号中偶数位版本一般为稳定版，奇数位版本一般为非稳定版。
 
 但是由于 Node 迭代速度很快，在企业开发中，经常要在多个 Node 版本中切换，使用 Node 的版本管理工具 nvm 来安装 Node，这样可以方便我们控制 Node 的版本。
 
@@ -90,9 +91,9 @@ Node 只需要在官网下载对应安装包下一步下一步安装即可，**�
 
 ### 6.1 安装 nvm
 
-**Win 安装 nvm**：Win上是没有 nvm 的，但是有开发者提供了类似 nvm 的工具，下载地址为：<https://github.com/coreybutler/nvm-windows/releases>
+**Win 安装 nvm**：Win 上是没有 nvm 的，但是有开发者提供了类似 nvm 的工具，下载地址为：<https://github.com/coreybutler/nvm-windows/releases>
 
-```html
+```txt
 # 安装方式：下载 nvm-setup.zip 直接下一步下一步安装即可
 
 # 安装完毕后查看是否安装成功
@@ -101,7 +102,7 @@ nvm version
 
 **Linux 与 Mac** 安装：下载地址为 <https://github.com/creationix/nvm>
 
-```html
+```txt
 # 安装方式
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
@@ -117,7 +118,7 @@ nvm version
 
 注意：新版 Mac 系统默认使用 zsh 作为命令行工具，需要进行调整：
 
-```html
+```txt
 vim ~/.zshrc
 setopt no_nomatch
 export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
@@ -132,7 +133,7 @@ nvm version
 
 使用步骤:
 
-```html
+```txt
 # 可以先配置镜像地址
 nvm node_mirror https://npm.taobao.org/mirrors/node/    # node镜像地址
 nvm npm_mirror https://npm.taobao.org/mirrors/npm/      # node包镜像地址

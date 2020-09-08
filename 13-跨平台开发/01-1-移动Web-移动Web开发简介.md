@@ -22,7 +22,7 @@ PC 端的页面直接放置在手机端显示，由于页面过大无法显示�
 
 视口示例：
 
-```html
+```txt
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 

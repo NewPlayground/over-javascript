@@ -19,7 +19,7 @@ sock.on(‘disconnect’)
 
 ### 1.3 客户端代码
 
-```Html
+```txt
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,7 +232,7 @@ net.createServer(sock=>{    //使用http接收会拒绝
 
 ### 2.3 客户端代码
 
-```html
+```txt
 <script>
   let sock = new WebSocket("ws://localhost:8000");
 

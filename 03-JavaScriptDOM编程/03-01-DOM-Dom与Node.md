@@ -84,7 +84,7 @@ document.createElement();
 
 Node 是基本的节点类型，所以所有节点也都拥有 Node 中的基本属性、方法。每个节点都有一个 nodeType 属性，用于表明节点的类型：
 
-```html
+```txt
 <div id="div">111</div>
 <script>
   var div = document.getElementById("div");
@@ -130,7 +130,7 @@ if (someNode.nodeType == 1) {
 
 每个节点都有 childNodes 属性，保存着一个 NodeList 对象：
 
-```html
+```txt
 <div id="div">
   <div>111</div>
   <div>222</div>

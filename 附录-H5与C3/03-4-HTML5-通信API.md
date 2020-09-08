@@ -15,7 +15,7 @@ iframeWindow.postMessage("A secret", "http://www.demo.com");
 
 iframe 应用实例：
 
-```html
+```txt
 <button id="btn">点击发送消息给iframe</button>
 <iframe src="http:127.0.0.1/iframe.html"></iframe>
 <script>

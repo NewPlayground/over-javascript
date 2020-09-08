@@ -11,7 +11,7 @@ navigator.mediaDevices.getUserMedia
 
 案例代码：
 
-```html
+```txt
 <!DOCTYPE html>
 <html>
   <head>
@@ -120,7 +120,7 @@ interval：从设备获取数据的频率（单位毫秒）
 摇一摇案例：摇一摇可以理解为手机不低于已定的速度在移动。  
 实现的方法是监听 devicemotion 事件后，判断设备在 XYZ 三个方向上的移动距离与前一次移动的距离差，并除以两次事件触发的时间差，即为移动设备移动的速度
 
-```html
+```txt
 <!DOCTYPE html>
 <html lang="en">
   <head>

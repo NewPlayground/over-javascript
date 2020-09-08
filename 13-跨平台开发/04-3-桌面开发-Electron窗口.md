@@ -6,32 +6,32 @@
 
 控制窗口位置：
 
-```html
+```txt
 属性：x y center movable 说明：x与y控制窗口在屏幕的位置，窗口默认位于屏幕正中
 应用：经常用于创建新窗口时，新窗口与当前窗口交错显示
 ```
 
 控制窗口大小：
 
-```html
+```txt
 属性：width height minWidth/maxWidth minHeight/maxHeight resizable minimizabel
 maximizable 说明：用来设置窗口大小，以及是否允许用户控制窗口大小
 应用：用户拖动窗口可以改变大小，如果不想让用户主动改变，可以在设置width、height后，设置resizable为false即可，max/min可以控制用户能够放大缩小的最大程度
 ```
 
-```html
+```txt
 属性：title icon frame autoHideMenuBar titleBarStyle
 说明：用来设置窗口的边框、标题栏、菜单栏
 应用：窗口默认的title为网页title，icon默认为可执行文件的图标。frame设置为false，才能自定义系统标题栏，实现自定义窗口
 ```
 
-```html
+```txt
 属性：nodeIntegration nodeIntegrationInWorker nodeIntegrationInSubFrames
 说明：控制窗口加载的网页是否集成Node环境
 应用：这三个配置的默认选项都是false，因为会引起安全问题
 ```
 
-```html
+```txt
 属性：preload webSecurity contextIsolation
 说明：允许最大限度控制渲染进程加载的页面
 应用：preload配置项可以实现渲染进程加载的页面注入脚本，该脚本也能访问Node环境，webSecurity用来控制同源策略
@@ -268,6 +268,8 @@ this.win = new remote.BrowserWindow({
 ```
 
 贴士：虽然父窗口此时无法使用，但并不代表其已经被禁用，仍然可以接收点击事件、完成用户输入。
+
+贴士：窗口不但有父子也有激活与否的判断，获取当前激活的窗口方法：`BrowserWindow.getFocusedWindow()`，这里与`currentWindow`不是一个概念，后者只是当前渲染进程关联的窗口。
 
 ### 3.3 Mac 系统注意点
 

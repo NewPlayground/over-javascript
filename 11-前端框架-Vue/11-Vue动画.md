@@ -50,7 +50,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 
 使用 transition 元素，把 需要被动画控制的元素 包裹起来，自定义两组样式，来控制 transition 内部元素实现动画；
 
-```html
+```txt
 <button @click="flag=!flag">显示/隐藏</button>
 
 <transition>
@@ -84,7 +84,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 - 在 transition 标签上添加 name 属性，并给 name 属性赋值，赋的值替换 ‘v-’ 来作为过渡类类名的前缀；
 - 使用自定义过渡类名 定义两组样式，来控制 transition 内部元素实现动画；
 
-```html
+```txt
 <button @click="flag=!flag">显示/隐藏</button>
 
 <transition name="my">
@@ -118,7 +118,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 钩子函数页可以说是动画的生命周期函数：
 入场的钩子函数
 
-```html
+```txt
 <transition
   v-on:before-enter="beforeEnter"
   v-on:enter="enter"

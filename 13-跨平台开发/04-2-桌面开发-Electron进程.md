@@ -16,7 +16,7 @@
 
 Electron 中模块的归属：
 
-```html
+```txt
 主进程模块：
 app、BrowserView、autoUpdater、contentTracing、dialog、gloablShortcut、ipcMainMenu、MenuItem、
 net、netLog、Notification、powerMonitor、powerSaveBlocker、protocol、screen、session、systemPreferences、TouchBar、Tray、webContents
@@ -57,7 +57,7 @@ clipboard、crashReporter、nativeImage、shell
 
 配置解释：
 
-```html
+```txt
 name：用于识别启动项目 type：调试环境，这里是Node
 runtimeExecutable：指向批处理文件，用于启动Electron
 ${workspaceRoot}：正在进行调试的程序的工作目录的绝对路径
@@ -88,7 +88,7 @@ mainWindow.webContents.openDevTools();
 
 `index.html`中发送数据：
 
-```html
+```txt
 <button id="btn">操作</button>
 <script>
   const { ipcRenderer } = require("electron");
@@ -132,7 +132,7 @@ ipcMain.on("msg_renderUsers", (event, param1, param2) => {
 
 渲染进程中接收：
 
-```html
+```txt
 <button id="btn">操作</button>
 <script>
   const { ipcRenderer } = require("electron");
@@ -183,7 +183,7 @@ remote 模块可以帮助开发者在渲染进程中访问主进程对象。
 
 在`index.html`中增加如下代码：
 
-```html
+```txt
 <button id="openView">打开百度</button>
 <script>
   const { remote } = require("electron");

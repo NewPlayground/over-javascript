@@ -28,7 +28,7 @@
 
 `v-text`，`v-html`，`v-pre`的作用与`{{}}`作用一样，都可以用来插入数据，且没有闪烁问题：
 
-```html
+```txt
 <div class="div" v-text="msg"></div>
 
 <script>
@@ -67,7 +67,7 @@
 
 ### 2.4 v-bind 绑定属性
 
-```html
+```txt
 <input type="button" v-bind:title="mytitle" />
 
 <script>
@@ -87,7 +87,7 @@
 
 ### 2.5 v-on 绑定事件
 
-```html
+```txt
 <input type="button" v-on:click="show" />
 
 <script>
@@ -146,7 +146,7 @@ v-on 可以缩写为@，绑定的事件函数可以写函数名，也可以书�
 
 v-if 每次都会重新创建或移除元素，切换性能消耗高。v-show 只是切换 display:none 的样式，初始渲染消耗高。
 
-```html
+```txt
 <!-- 每次都会重新创建或移除元素，切换性能消耗高 -->
 <h2 v-if="flag">test1</h2>
 

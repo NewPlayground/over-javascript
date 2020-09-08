@@ -7,7 +7,7 @@ JavaScript 的代码要被书写于脚本标签中，但是 HTML5 和 HTML4 的�
 
 脚本标签有三种书写位置：
 
-```html
+```txt
 <!-- 内嵌式：直接在html网页中书写代码，HelloWorld中使用了内嵌式 -->
 <script>
   console.log("Hello World!");
@@ -40,7 +40,7 @@ script 标签定义了 6 个属性：
 
 在传统做法中，所有的 script 元素都应该放在页面的 head 元素中，如下所示：
 
-```html
+```txt
 <!DOCTYPE html>
 <html>
   <head>
@@ -56,7 +56,7 @@ script 标签定义了 6 个属性：
 
 为了避免上述现象，可以将 script 元素放在页面的底部：
 
-```html
+```txt
 <!DOCTYPE html>
 <html>
   <head> </head>
@@ -76,7 +76,7 @@ script 标签定义了 6 个属性：
 
 defer 属性表示告诉浏览器立即下载 JS 外部文件，但是会延迟执行 JS，即脚本会被延迟到整个页面都解析完毕后再运行。
 
-```html
+```txt
 <script src="./demo1.js" defer="defer"></script>
 <script src="./demo2.js" defer="defer"></script>
 ```
@@ -87,7 +87,7 @@ defer 属性表示告诉浏览器立即下载 JS 外部文件，但是会延迟�
 
 异步脚本 async 属性是 H5 中的规范，该属性与 defer 类似，会告诉浏览器立即下载文件，但是 async 脚本用于不让页面等待两个脚本的下载执行，同时也不保证执行的顺序。所以如果要引入多个异步脚本，要确保他们互相之间不再依赖！也建议异步脚本不熬在加载期间修改 DOM。
 
-```html
+```txt
 <script src="./demo1.js" async></script>
 <script src="./demo2.js" async></script>
 ```

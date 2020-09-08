@@ -17,7 +17,7 @@ HTML 标准由 W3C 组织制定，经过多年发展，其标准已经到达了 
 
 ### 1.2 标准 HTML4 网页结构
 
-```html
+```txt
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -29,7 +29,7 @@ HTML 标准由 W3C 组织制定，经过多年发展，其标准已经到达了 
 
 ### 1.3 标准 HTML5 网页结构
 
-```html
+```txt
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +53,7 @@ HTML 标准由 W3C 组织制定，经过多年发展，其标准已经到达了 
 
 图片标签 img 示例：
 
-```html
+```txt
 <img src="1.jpg" atl="我是图片" title="图片标题" width="200" height="300" />
 ```
 
@@ -66,7 +66,7 @@ img 标签常用属性：
 
 a 链接示例：
 
-```html
+```txt
 <a href="http://www.baidu.com/">百度</a>
 ```
 
@@ -80,14 +80,14 @@ a 标签常用属性：
 
 锚链接位置跳转演示：
 
-```html
+```txt
 <p id="test">你好</p>
 <a href="#test">查看问候语</a>
 ```
 
 a 链接特殊写法：可以制造点击不执行，一般在 tab 栏切换中使用
 
-```html
+```txt
 <a href="”javascript:;”"></a>
 <a href="”javascript:void(0);”"></a>
 ```
@@ -107,7 +107,7 @@ Html 中的特殊字符需要使用转义字符书写：
 
 meta 标签用来设置字符集、关键字、描述、重定向等：
 
-```html
+```txt
 <meta charset="utf-8" />
 <meta name="keywords" content="流行资讯" />
 <meta name="description" content="最新服装设计流行信息" />
@@ -119,7 +119,7 @@ meta 标签用来设置字符集、关键字、描述、重定向等：
 
 link 标签必须放在 head 中，用来引入外部样式表和网页标题小图标：
 
-```html
+```txt
 <link rel="stylesheet" href="1.css" /> <link rel="icon" href="favicon.ico" />
 ```
 
@@ -127,13 +127,13 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 引入音乐文件：
 
-```html
+```txt
 <embed src="1.mp3" hidden="true"></embed>
 ```
 
 ### 2.7 滚动标签 marquee
 
-```html
+```txt
 <marquee
   behavior="slide"
   direction="up"
@@ -155,7 +155,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 ### 2.8 注释
 
-```html
+```txt
 <!-- 这里书写注释 -->
 ```
 
@@ -163,7 +163,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 无序列表 ul：
 
-```html
+```txt
 <ul>
   新闻1
 </ul>
@@ -182,7 +182,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 有序列表 ol:
 
-```html
+```txt
 <ol type="a" start="3">
   <li>新闻1</li>
   <li>新闻2</li>
@@ -197,7 +197,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 自定义列表 dl：
 
-```html
+```txt
 <dl>
   <dt>新闻汇总</dt>
   <dd>新闻1</dd>
@@ -222,7 +222,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 ### 4.1 table 组成
 
-```Html
+```txt
 <table border="1" width="300" height="100" cellspacing="0" cellpadding="5" align="center" bgcolor="pink">
     <tr>
         <th>姓名</th>
@@ -250,7 +250,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 - table 标签的标题标签是 caption，不能使用 title
 - td 内容垂直对齐使用 valign
 
-```Html
+```txt
 <!-- valign的其他值有 top middle bottom -->
 <td valign="bottom">123</td>
 ```
@@ -260,7 +260,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 - 横向合并 colspan：设置 td 的横向合并
 - 纵向合并 rowspan：设置 td 的纵向合并
 
-```Html
+```txt
 <table width="300" height="200" cellspacing="0" border="1">
     <tr>
         <td colspan="2">111</td>

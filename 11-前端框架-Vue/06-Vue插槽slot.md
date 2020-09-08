@@ -12,7 +12,7 @@
 
 现在有这样的需求：comp 组件内部需要依据数据列表循环显示多个数据，slot 是最为快捷的实现方式：
 
-```html
+```txt
 <div id="app">
   <comp>
     <list></list>
@@ -52,7 +52,7 @@
 
 多个插槽共同使用时，如果需要对单独的插槽进行个性设计，就需要给插槽命名：
 
-```html
+```txt
 <div id="app">
   <comp><span>替换</span></comp>
 </div>
@@ -89,7 +89,7 @@
 
 组件在编译时，其数据的来源是有作用域限制，只会来自于自身所属的组件。
 
-```html
+```txt
 <div id="app">
   <comp v-show="isShow">
     <p v-show="isShow">slot也会显示</p>
@@ -124,7 +124,7 @@ comp 位于 组件 #app 中，所以会使用根组件中的 data 数据，而�
 
 如果现在要使用组件中的属性值，则需要为插槽定义属性：
 
-```html
+```txt
 <div id="app">
   <comp v-show="isShow">
     <template slot-scope="myslot">

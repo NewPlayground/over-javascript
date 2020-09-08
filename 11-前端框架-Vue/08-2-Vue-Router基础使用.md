@@ -46,7 +46,7 @@ let router = new VueRouter({
 
 name 的使用场景二：
 
-```html
+```txt
 <router-link :to="{name:'路由的名字'}"></router-link>
 ```
 
@@ -112,8 +112,7 @@ router-link 的其他设置：
 - to 的书写支持多种形式：`:to="home"`，`:to="{path: '/home'}"`
 - router-link 默认生成的是 a 标签，也可以生成 div、p 等标签，添加属性：`tag="div"`，此时 div 会自动拥有监听点击事件的功能
 - 默认的触发组件事件是点击事件，也可以修改为别的事件：添加属性：`event="mouseover"`
-- 添加`exact`属性会让样式渲染变为不包含形式（精确匹配），`<router-link to="about" exact tag="li"> </router-link>`  
-
+- 添加`exact`属性会让样式渲染变为不包含形式（精确匹配），`<router-link to="about" exact tag="li"> </router-link>`
 
 **router-link 改成制定的标签：**很多导航中，使用导航标签既包含图标又包含文字，router-link 可以这样配置：
 

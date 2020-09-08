@@ -4,7 +4,7 @@
 
 计算属性可以简化直接书写表达式带来的代码繁杂性。比如在实际开发中，后端返回的数据并不符合前端展示的需要，需要对这些数据进行处理：
 
-```html
+```txt
 <div>{{msg.toUpperCase()}}</div>
 ```
 
@@ -75,7 +75,7 @@ new Vue({
 
 过滤器可以对传递过来的值进行过滤：
 
-```html
+```txt
 <div id="app">{{count | myFormat(3,1) }}</div>
 
 <script>

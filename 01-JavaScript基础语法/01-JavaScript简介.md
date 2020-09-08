@@ -42,7 +42,7 @@ JavaScript（以下简写为 js）是一门解释型脚本编程语言，也是�
 
 编写 js 版`Hello World`，创建 helloworld.html 文件，代码如下：
 
-```html
+```txt
 <!DOCTYPE html>
 <html lang="en">
   <head>

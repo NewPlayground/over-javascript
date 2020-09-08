@@ -107,20 +107,16 @@ app.on("window-all-closed", () => {
 
 第四步：运行
 
-```
-# 直接运行
-npx electron .
-
-# 为了简便，也可以使用npm脚本运行
-# 在package.json中的script内添加一行脚本：    "start": "electron ."
-npm start
+```txt
+# 直接运行 npx electron . # 为了简便，也可以使用npm脚本运行 #
+在package.json中的script内添加一行脚本： "start": "electron ." npm start
 ```
 
 ### 3.2 js 脚本的引入
 
 在 index.html 中可以像普通的前端开发一样，直接使用 script 脚本引入其他的 js 文件即可：
 
-```html
+```txt
 <!-- 在根本目创建一个lib.js，内容如下：  -->
 window.data = { key: 'value' }
 
@@ -152,7 +148,7 @@ module.exports = {
 
 此时其他的 js 文件在 index.html 就可以使用如下方式引入：
 
-```html
+```txt
 <script>
   let data = require("./lib");
   alert(data.key);
@@ -168,15 +164,14 @@ module.exports = {
 
 也可以直接使用官网的 quick start 案例：
 
-```
-git clone https://github.com/electron/electron-quick-start
-cd electron-quick-start
-npm install && npm start
+```txt
+git clone https://github.com/electron/electron-quick-start cd
+electron-quick-start npm install && npm start
 ```
 
 ## 四 Electron Electron API
 
-Electron API 项目集成了大量官方的 API 演示案例，[网址](https://github.com/electron/electron-api-demos)为：https://github.com/electron/electron-api-demos
+Electron API 项目集成了大量官方的 API 演示案例，[网址](https://github.com/electron/electron-api-demos)为：<https://github.com/electron/electron-api-demos>
 
 ## 五 Electron 集成现代框架
 
@@ -184,18 +179,12 @@ Electron API 项目集成了大量官方的 API 演示案例，[网址](https://
 
 Vue 集成 Electron，不需要使用示例项目，其 cli 工具直接支持：
 
-```
-# 安装vue cli 工具
-npm i @vue/cli -g
-
-# 创建项目
-vue create project
-
-# 进入项目后，集成electron。下列命令容易因为网络原因卡住，可以切换源，或者使用 yarn -add -D electron-chromedriver
-vue add electron-builder        # 此命令添加的 src/background.js是主进程入口程序，src/main.js 是渲染进程入口程序
-
-# 启动
-npm run electron:serve
+```txt
+# 安装vue cli 工具 npm i @vue/cli -g # 创建项目 vue create project #
+进入项目后，集成electron。下列命令容易因为网络原因卡住，可以切换源，或者使用
+yarn -add -D electron-chromedriver vue add electron-builder # 此命令添加的
+src/background.js是主进程入口程序，src/main.js 是渲染进程入口程序 # 启动 npm run
+electron:serve
 ```
 
 bug 解决：此时国内环境是无法直接启动的，是因为要安装 dev-tools，这个需要翻墙，可以暂时注释
@@ -212,18 +201,18 @@ bug 解决：此时国内环境是无法直接启动的，是因为要安装 dev
 // }
 ```
 
-其他 bug 解决：https://www.psvmc.cn/article/2019-11-05-vue-cli3-electron.html
+其他 bug 解决：<https://www.psvmc.cn/article/2019-11-05-vue-cli3-electron.html>
 
 ### 5.2 Electron 与 vue-element-admin 的集成示例
 
 该示例可以直接启动，在 .vscode 目录中创建了调试工具环境：
-https://github.com/ruyuejun/cli-electron-vue-admin
+<https://github.com/ruyuejun/cli-electron-vue-admin>
 
 ### 5.3 Electron 集成 React
 
-目前较为活跃的集成示例是：https://github.com/electron-react-boilerplate/electron-react-boilerplate
+目前较为活跃的集成示例是：<https://github.com/electron-react-boilerplate/electron-react-boilerplate>
 
-当然为了规避 Electron 打包体积大，提升性能，推荐使用：ProtonNative(https://github.com/kusti8/proton-native)，该项目优点：
+当然为了规避 Electron 打包体积大，提升性能，推荐使用：ProtonNative(<https://github.com/kusti8/proton-native)>，该项目优点：
 
 - 与 ReactNative 语法一直，可以使用 React 生态，如 Redux
 - 也可以使用 Node.js 生态中的包
@@ -231,8 +220,8 @@ https://github.com/ruyuejun/cli-electron-vue-admin
 
 ### 5.4 Electron 集成 Angular
 
-目前较为活跃的集成示例是：https://github.com/maximegris/angular-electron
+目前较为活跃的集成示例是：<https://github.com/maximegris/angular-electron>
 
 ### 5.5 Electron 集成 Webpack
 
-很少用到单独集成 Webpack 的项目，为了以防万一，直接按照该示例操作即可：https://github.com/ruyuejun/cli-electron-webpack
+很少用到单独集成 Webpack 的项目，为了以防万一，直接按照该示例操作即可：<https://github.com/ruyuejun/cli-electron-webpack>

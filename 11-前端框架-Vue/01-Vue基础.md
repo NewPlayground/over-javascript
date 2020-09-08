@@ -4,7 +4,7 @@
 
 原生 DOM 编程：
 
-```html
+```txt
 <div class="div"></div>
 
 <script>
@@ -23,7 +23,7 @@
 
 Vue 中的写法：
 
-```html
+```txt
 <div class="div">
   <div v-for="item in arr">{{item}}</div>
 </div>
@@ -77,7 +77,7 @@ Vue 的核心特点：
 
 ### 1.1 HelloWorld 示例
 
-```html
+```txt
 <div id="app">
   <div>{{msg}}</div>
   <!-- 获取数据 -->
@@ -126,7 +126,7 @@ Vue 代理 data 数据在 HTML 中使用插值 `{{}}` 进行渲染，除了绑�
 
 每个 Vue 实例都会代理其对应 data 对象中的所有属性：
 
-```html
+```txt
 <div class="div">渲染数据为：{{a}}</div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

@@ -4,7 +4,7 @@
 
 表单用来收集信息，构成包含：表单域（form 标签）与表单控件（input 等），form 标签即代表包裹了一个表单域：
 
-```Html
+```txt
 <form action="" method="">  <!--  action:用来处理表单数据 method:表单提交得方式 -->
 </form>
 ```
@@ -15,21 +15,21 @@
 
 input 标签的 type 可以指定控件的类型为文本、密码、单选框等多种类型，最常见的表单空间是文本输入框：
 
-```html
+```txt
 <input type="text" maxlength="6" disabled="disabled" />
-<!-- 
+<!--
     maxlength="6"    		限制输入字符长度
     readonly=”readonly”  	将输入框设置为只读状态（不能编辑）
     disabled="disabled"     输入框未激活状态
     name="username"   	    输入框的名称
-    value="大前端"           为当前控件设置默认值，将输入框的内容传给处理文件 
-    placeholder 			提示信息属性 
+    value="大前端"           为当前控件设置默认值，将输入框的内容传给处理文件
+    placeholder 			提示信息属性
 -->
 ```
 
 常用表单控件：
 
-```html
+```txt
 <!-- 密码框： -->
 <input type="password" />
 <!-- 密码输入框的属性与文本输入框一致 -->
@@ -80,6 +80,6 @@ input 标签的 type 可以指定控件的类型为文本、密码、单选框�
 
 表单元素的描述文字应该使用 label 标签包裹，并且使用 for 属性指向表单元素，从而达到点击描述文字可以聚焦文本框的效果：(注意下列的 username 是 id)
 
-```html
+```txt
 <label for="username">用户名</label> <input type="text" id="username" />
 ```
