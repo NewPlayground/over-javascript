@@ -1,3 +1,5 @@
+# Vue-Router 基础使用
+
 ## 一 路由常见配置
 
 ### 1.1 路由模式
@@ -123,7 +125,7 @@ router-link 的其他设置：
 </router-link>
 ```
 
-**router-link 配置当前激活状态的 class 名**
+**router-link 配置当前激活状态的 class 名**。
 
 router-link 生成的 li 元素，被点击的 li 上会带有 router-link-active 的 class 属性，用来配置激活状态的样式。这个 class 名字很长可以自己配置新名字：
 

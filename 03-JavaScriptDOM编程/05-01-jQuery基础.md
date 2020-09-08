@@ -1,3 +1,5 @@
+# jQuery 基础
+
 ## 一 jQuery 初步使用
 
 ### 1.1 jQuery 简介
@@ -9,7 +11,7 @@
 - 简单功能原生实现复杂（比如各种循环，jQuery 隐式迭代帮我们做了）
   jQuery 的 API 都是方法，即要加小括号()，小传入的参数不同，功能不同。
 
-```
+```txt
 版本一：1.x版本，兼容IE6/7/8
 版本二：2.x版本，不兼容IE6/7/8
 版本三：3.x版本，更精简，不再兼容低版IE
@@ -53,11 +55,11 @@ jQuery 对象：使用 jQuery 操作 DOM 获得的对象，内部是一个对 DO
 jQuery 对 DOM 对象封装后，就不需要大量重复的遍历，且能更好的实现兼容问题。
 DOM 对象与 jQuery 对象转换：
 
-```
+```txt
 DOM对象转换为jQuery对象方式：
 $(DOM对象);
 jQuery对象转换为DOM对象：
-方式一：var btn = jQuery对象[0];		//推荐使用该方式
+方式一：var btn = jQuery对象[0];    //推荐使用该方式
 方式二：var btn = jQuery对象.get(0);
 
 ```
@@ -66,39 +68,39 @@ jQuery对象转换为DOM对象：
 
 ### 2.1 基本选择器
 
-```
+```txt
 id选择器        $('#btn');
 类选择器        $('.btn');
 标签选择器      $('div');
-选择器的交集    $(.div,.green')		选择class为div，或class为green的元素
-选择器的并集    $('.div.green')		选择class为div，且class为green的元素
+选择器的交集    $(.div,.green')     选择class为div，或class为green的元素
+选择器的并集    $('.div.green')     选择class为div，且class为green的元素
 ```
 
 ### 2.2 层级选择器
 
-```
-后代选择器（空格）：	$('#ul li')		选择id为ul的元素的所有后代li
-子代选择器（>）：		$('#ul > li')	选择id为ul的元素的直系后代li
+```txt
+后代选择器（空格）：    $('#ul li')     选择id为ul的元素的所有后代li
+子代选择器（>）：       $('#ul > li')   选择id为ul的元素的直系后代li
 ```
 
 ### 2.3 过滤选择器
 
-```
-:eq(index)	选择匹配索引的元素		    $('li:eq(2)')选择索引号为2的li
-:odd		选择匹配奇数索引元素		$('li:odd')
-:even		选择匹配偶数索引元素		$('li:even')
+```txt
+:eq(index)  选择匹配索引的元素          $('li:eq(2)')选择索引号为2的li
+:odd        选择匹配奇数索引元素        $('li:odd')
+:even       选择匹配偶数索引元素        $('li:even')
 ```
 
 ### 2.4 筛选选择器
 
-```
+```txt
 查找所有后代元素:find(selector)
 $(“#j_wrap”).find(“li”).css(“color”, “red”);
 
 查找直接子代元素:children()
 $(“#j_wrap”).children(“ul”).css(“color”, “red”);
 
-查找所有兄弟元素:siblings()	（不包括自己）
+查找所有兄弟元素:siblings()     不包括自己）
 $(“#j_liItem”).siblings().css(“color”, “red”);
 
 查找所有兄弟节点：
@@ -155,36 +157,36 @@ let $spanNode = $("<span>我是一个span元素</span>");
 let node = $("#box").html（"<li>我是li</li>"）；
 
 //添加子元素 append()
-$(selector).append($node);				//追加传入jQuery对象
-$(selector).append('<div></div>');		//直接传入html片段
+$(selector).append($node);              //追加传入jQuery对象
+$(selector).append('<div></div>');      //直接传入html片段
 appendTo(s)          //添加到s元素最后面，原生没有
 prepend()           //添加到子元素最前面，类似原生的appendChild()
 
 //添加兄弟元素
-after()		  	    //添加到自己后面（作为兄弟）
-before()		    //添加到自己前面（作为兄弟）
+after()             //添加到自己后面（作为兄弟）
+before()            //添加到自己前面（作为兄弟）
 
 //获取到的元素剪切到某个位置
-nsertBefore()  	    //原生JS这里是选中后复制到某个位置
-insertAfter()		//原生JS没有insertAfter()
+nsertBefore()       //原生JS这里是选中后复制到某个位置
+insertAfter()       //原生JS没有insertAfter()
 
 //html() val() text
-html():	没有参数是获取包含标签的内容，有参数是插入内容,
+html(): 没有参数是获取包含标签的内容，有参数是插入内容,
         设置内容时，如果是html标记，与原生 innerHTML相同
-text():	没有参数获取不包含标签的内容(字符串)，有参数是插入内容，
+text(): 没有参数获取不包含标签的内容(字符串)，有参数是插入内容，
         设置内容时，类似原生innerText（火狐使用textContent获取），无视HTML标记插入纯文本，但是text()不存在兼容问题
 val():  获取匹配元素的值，只匹配第一个元素，
         有参数时设置所有匹配到的元素的值
 
 //删除与清空元素
 $(selector).empty();        // 清空参数所有子元素，会清除事件，推荐使用
-$(selector).html("");	    // 同上，但元素事件不会被清空,会出现内存泄露
-$(selector).remove();	    // 删除元素与事件，包括自己，返回被删除的元素
-$(selector).detach();	    // 同上，但是会保留事件
+$(selector).html("");       // 同上，但元素事件不会被清空,会出现内存泄露
+$(selector).remove();       // 删除元素与事件，包括自己，返回被删除的元素
+$(selector).detach();       // 同上，但是会保留事件
 
 //复制元素 clone()
 $(selector).clone();        //复制匹配的元素，返回值为复制的新元素
-$(selector).clone(true);	//同时复制操作行为
+$(selector).clone(true);    //同时复制操作行为
 
 ```
 
@@ -192,22 +194,21 @@ $(selector).clone(true);	//同时复制操作行为
 
 使用 style 获取的都采用 css()方法设置，在标签里书写的样式，使用 attr()获取。
 
-```
+```js
 attr():
-$(selector).attr(“title”, “jQeury简介”);	//设置属性，设置多个传入对象
-$(selector).attr(“title”);				//获取属性
-$(selector).removeAttr(“title”); 		//移除属性
+$(selector).attr(“title”, “jQeury简介”);         // 设置属性，设置多个传入对象
+$(selector).attr(“title”);                      // 获取属性
+$(selector).removeAttr(“title”);                // 移除属性
 
 prop():
-注意：checked、selected、disabled要使用.prop()方法。(1.7版本之前仍然可以使用attr)。
-prop方法通常用来影响DOM元素的动态状态，而不是改变的HTML属性。例如：input和button的disabled特性，以及checkbox的checked特性。
-
-
 ```
+
+注意：checked、selected、disabled 要使用.prop()方法。(1.7 版本之前仍然可以使用 attr)。
+prop 方法通常用来影响 DOM 元素的动态状态，而不是改变的 HTML 属性。例如：input 和 button 的 disabled 特性，以及 checkbox 的 checked 特性。
 
 ### 3.4 快速操作表单-数据串联
 
-```txt
+```html
 <form>
     <input type="text" name="a" value="1">
 <input type="text" name="b" value="2">
@@ -274,13 +275,13 @@ $(“div”).scrolllLeft();	    // 被卷曲的宽度，即相对于滚动条左
 
 ### 3.6 filter has not
 
-```javascript
+```js
 $('div').filter('#div1').css('background','red');
 $('div').has('span').css('background','green');
 
-filter():	过滤
-not()：		filter的反义词
-has()：		has查看的是当前元素是否包含，filter过滤的是所有同级元素
+filter()：  // 过滤
+not()：     // filter的反义词
+has()：     // has查看的是当前元素是否包含，filter过滤的是所有同级元素
 ```
 
 ### 3.7 常见案例 全选/反选
