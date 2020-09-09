@@ -58,10 +58,10 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 **语法基础**：
 
 - [《JavaScript 高级程序设计》第 3 版](https://book.douban.com/subject/10546125/)：外号红宝书，笔者认为是最好的 JS 入门书籍
+- [JavaScript 编程精解(第 3 版)](https://book.douban.com/subject/35011711/)：神作《Eloquent JavaScript》，开源地址：<http://eloquentjavascript.net/>
 - [《JavaScript 语言精髓与编程实践（第 3 版）》](https://book.douban.com/subject/35085910/)：国内出品的 JS 书籍大部头，与红宝书相似，但是对语法以及 ES6 深入理解有所涉及
 - [《JavaScript 语言精粹》修订版](https://book.douban.com/subject/11874748/)：外号蝴蝶书，是 JS 核心语法的荟萃，短小精悍
 - [《JavaScript 权威指南》第 6 版](https://book.douban.com/subject/10549733/)：外号犀牛书，是一部 JS 的百科全书，过于庞大，有红宝书足矣
-- [JavaScript编程精解(第3版)](https://book.douban.com/subject/35011711/)
 
 **DOM 编程**：
 
@@ -83,11 +83,11 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 **框架**：
 
 - [《深入浅出 Vue.js》](https://book.douban.com/subject/32581281/)
-- [《Vue.js应用测试》](https://book.douban.com/subject/34998070/)
+- [《Vue.js 应用测试》](https://book.douban.com/subject/34998070/)
 - [《深入 React 技术栈》](https://book.douban.com/subject/26918038/)
 - [《深入浅出 React 和 Redux》](https://book.douban.com/subject/27033213/)
 - [《React 状态管理与同构实战》](https://book.douban.com/subject/30290509/)
-- [《基于MVC的JavaScript Web富应用开发》](https://book.douban.com/subject/10733304/)
+- [《基于 MVC 的 JavaScript Web 富应用开发》](https://book.douban.com/subject/10733304/)
 
 **JavaScript 提升**：
 
@@ -95,20 +95,20 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 - [《JavaScript 核心技术开发解密》](https://book.douban.com/subject/30190189/)：短小精悍的介绍了一些难点
 - [《你不知道 JavaScript》上卷+中卷](https://book.douban.com/subject/26351021/)：笔者认为目前最好的 JS 深入书籍之一
 - [《Effective JavaScript》](https://book.douban.com/subject/25786138/)
-- [《JavaScript面向对象编程指南（第2版）》](https://book.douban.com/subject/26302623/)
+- [《JavaScript 面向对象编程指南（第 2 版）》](https://book.douban.com/subject/26302623/)
 
 **综合提升**：
 
 - [《高效前端：Web 高效编程与优化实践》](https://book.douban.com/subject/30170670/)
 - [《高性能 JavaScript》](https://book.douban.com/subject/5362856/)
 - [《了不起的 JavaScript 工程师：从前端到全端高级进阶》](https://book.douban.com/subject/34788884/)
-- [《Webpack实战：入门、进阶与调优》](https://book.douban.com/subject/34430881/)
-- [《JavaScript设计模式与开发实践》](https://book.douban.com/subject/26382780/)
+- [《Webpack 实战：入门、进阶与调优》](https://book.douban.com/subject/34430881/)
+- [《JavaScript 设计模式与开发实践》](https://book.douban.com/subject/26382780/)
 - [现代前端技术解析](https://book.douban.com/subject/27021790/)：前端技术与趋势总览
 - [《JavaScript 设计模式与开发实践》](https://book.douban.com/subject/26382780/)
 - [《JavaScript 模式》](https://book.douban.com/subject/11506062/)
 - [《JavaScript 函数式编程指北》](https://github.com/MostlyAdequate/mostly-adequate-guide)：[中文开源地址为](https://github.com/llh911001/mostly-adequate-guide-chinese)
-- [《编写可维护的JavaScript》](https://book.douban.com/subject/21792530/)
+- [《编写可维护的 JavaScript》](https://book.douban.com/subject/21792530/)
 
 ### Node 开发
 
@@ -123,8 +123,8 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 ### WebGL
 
-- [《WebGL编程指南》](https://book.douban.com/subject/25909351/)
-- [《Three.js开发指南》](https://book.douban.com/subject/26349497/)
+- [《WebGL 编程指南》](https://book.douban.com/subject/25909351/)
+- [《Three.js 开发指南》](https://book.douban.com/subject/26349497/)
 
 ## 附
 

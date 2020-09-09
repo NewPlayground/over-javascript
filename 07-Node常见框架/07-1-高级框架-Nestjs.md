@@ -1,8 +1,10 @@
+# Node 框架 Nest
+
 ## 一 Nest 简介
 
-Nest 是使用 TypeScript 的 Node 服务端框架，其内核是 Express。
+Nest 是使用 TypeScript 开飞的 Node 服务端框架，其内核是可插拔的，默认内核是 Express。
 
-Nest 的中文文档：https://docs.nestjs.cn/
+Nest 的中文文档：<https://docs.nestjs.cn/>
 
 与 Express、Koa 不同，Nest 具备了大量企业级开发特性，这些特性往往与 Java 中的 Spring 框架开发思想相似：
 
@@ -11,13 +13,13 @@ Nest 的中文文档：https://docs.nestjs.cn/
 - 提供了大量 cli 工具命令与第三方模块，开发起来相对方便
 - 支持函数式、面向对象、函数式响应编程等范式
 
-Express 与 Koa 适合小型项目，如个人博客等，但是其约定很差，项目格式会因为不同开发者的个人风格造成项目风格千奇百怪，阿里的 egg 虽然也做了约束，但是仍然只适合普通项目。Nest 是 NodeJS 真正意义上的第一个 Web 框架。
+Express 与 Koa 适合小型项目，如个人博客等，但是其约定很差，项目格式会因为不同开发者的个人风格而千奇百怪，阿里的 egg 虽然也做了约束，但是仍然只适合普通项目。Nest 是 NodeJS 真正意义上的第一个 Web 框架。国内阿里的 MidwayJS 也引入了依赖注入等功能，与 NestJS 功能类似，但是尚未普及。
 
 ## 二 Nest7.0 初步使用
 
 ### 2.1 环境搭建
 
-```
+```txt
 # 环境要求
 node -v         # v12.10.0
 npm -v          # 6.10.3
@@ -38,7 +40,7 @@ http://localhost:3000
 
 ### 2.2 目录分析
 
-```
+```txt
 src
 ├── main.ts                 # 入口：使用NestFactory 创建了实例
 ├── app.module.ts           # 应用程序的根模块
@@ -53,7 +55,7 @@ nest 推荐将项目按照 业务模块进行划分（module），比如`user.mo
 
 nest 无需手动创建目录，并为目录中的 controller、service、module 添加依赖关系，而是使用 cli 命令即可自动完成上述功能：
 
-```
+```txt
 # 创建模块
 nest g mo user          # g 即 generator，mo是 module 的缩写
 
@@ -66,15 +68,11 @@ nest g s user           # s 是 service 的缩写
 
 贴士：`nest --help` 可以查看缩写规范。
 
-### 2.4 接口书写
-
-## 三 一些工具的继承
-
-### 2.1 swagger
+### 2.3 swagger
 
 nest 支持 swagger 接口文档：
 
-```
+```txt
 npm i --save @nestjs/swagger swagger-ui-express
 ```
 
@@ -117,16 +115,6 @@ export class UserController {
 }
 ```
 
-访问接口信息：
+访问接口信息：<http://localhost:3000/api-docs/>
 
-```
-http://localhost:3000/api-docs/
-```
-
-## Temp
-
-Mogodb
-https://www.npmjs.com/package/@typegoose/typegoose
-数据校验：
-npm i -S class-validator class-transformer 分别用于验证和数据类型转换（前端传递过来的数字转换为纯数字）
-https://blog.csdn.net/marendu/article/details/105745110
+## 三
