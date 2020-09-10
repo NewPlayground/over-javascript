@@ -85,6 +85,16 @@ args：              启动参数，这里简写为 . ，其实是 index.js
 mainWindow.webContents.openDevTools();
 ```
 
+### 2.3 浏览器debug主进程
+
+浏览器也可以用来调试主进程。在启动脚本中添加如下参数：
+
+```txt
+"dev": "electron --inspect=5858 ."
+```
+
+Electron 项目启动后，打开Chrome浏览器，输入 `chrome://inspect`，点击 `Configure` 后，输入配置的端口 `localhost:5858` 即可，此时浏览器会连接该程序。
+
 ## 三 进程间的消息传递
 
 ### 3.1 渲染进程向主进程发送消息
