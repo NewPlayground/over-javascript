@@ -4,7 +4,7 @@
 
 Node.js 由 Ryan Dahl 于 2009 年发布，其最初的目的是为了基于高性能的 V8 引擎开发一个高性能 Web 服务器（类似 Apache/Tomcat 的软件），由于 Node 补充了 JavaScript 在 Web 服务端的空白，其自带的网络、文件能力也让 Node 在前端工程化工具领域大放异彩，Node 收获了意想不到的繁荣。
 
-我们之前在学习 JavaScript 的时候，都是基于浏览器而学习的。切记：EcmaScript 只是 JS 语言的标准，为编程语言提供语法准则，并未提供 API，类似`document`、`window`、`getElementById()`这些对象、函数不是 JavaScript 本身的能力，而是浏览器封装给我们使用的。这种额外封装了编程语言执行环境的进程级系统，我们称之为运行时。目前 JavaScript 常见的运行时环境：
+我们之前在学习 JavaScript 的时候，都是基于浏览器而学习的。切记：ECMAScript 只是 JS 语言的标准，为编程语言提供语法准则，并未提供 类似`document`、`window`、`getElementById()`这这样的 DOM 操作 API，因为这不应该是 JavaScript 编程语言本身的能力，而是浏览器的能力。目前 JavaScript 常见的运行平台：
 
 - 浏览器：封装了 DOM、BOM 等页面渲染相关的 API，JS 依赖于此可以操作浏览器上的元素等。其中 Chrome 浏览器底层解析 JS 的引擎是 V8。
 - Node：封装了文件、网络的 API，JS 依赖于此可以操作计算机中的文件、网络等。与 Chrome 浏览器相同，起解析 JS 的引擎也是 V8。
@@ -23,9 +23,15 @@ Node 的出现很大程度上依赖于 V8 引擎，Chrome 浏览器内部解释�
 ```txt
 开发平台：    Node            Java
 编程语言：    JavaScript      Java
-解析引擎：    V8              JVM
+runtime：    V8              JVM
 包管理器：    NPM             Maven
 ```
+
+笔者这里对运行平台、运行时的理解：
+
+- 运行平台：为某个语言提供了该平台专属的 API，如浏览器平台，为 JS 提供了 DOM、BOM 操作 API；Node 平台为 JS 提供了文件、网络操作 API
+- 运行时（runtime）：为某个语言提供解析引擎，如 Chrome 的 V8，Firefox 的 SpiderMonkey
+- 总结：运行时的作用是解析编程语言，所以其最核心的特点是要执行编程语言标准，如 ECMAScript，所以其于浏览器、Node，以及各自的事件循环都没有关系，这些平台可以选择任一款 JS 的运行时。
 
 ## 二 Node 架构
 
