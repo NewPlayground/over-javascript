@@ -50,8 +50,8 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 - [《深入解析 CSS》](https://book.douban.com/subject/35021471/)：新近较好的 CSS 基础书籍
 - [《CSS 权威指南（第四版）》](https://book.douban.com/subject/33398314/)：经典 CSS 书籍
 - [《CSS 揭秘》](https://book.douban.com/subject/26745943/)：重点书籍，CSS 书籍瑰宝！！！
-- [《CSS 世界》](https://book.douban.com/subject/27615777/)：虽然该书语言风格有很大争议，但是不失为 CSS  领域的一本深入之作
-- [《CSS选择器世界》](https://book.douban.com/subject/34846688/)：《CSS 世界》作者的第二本书，虽然知识点很窄，但是实战经验丰富
+- [《CSS 世界》](https://book.douban.com/subject/27615777/)：虽然该书语言风格有很大争议，但是不失为 CSS 领域的一本深入之作
+- [《CSS 选择器世界》](https://book.douban.com/subject/34846688/)：《CSS 世界》作者的第二本书，虽然知识点很窄，但是实战经验丰富
 
 其他优秀书籍：
 
@@ -130,7 +130,7 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 ### Node 开发
 
 - [overnote 笔记](https://github.com/overnote/over-javascript/tree/master/06-Node%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9D%97)：入门书籍，笔者认为直接看本笔记即可
-- [《Koa与Node.js开发实战》](https://book.douban.com/subject/30404722/)：如果Web开发基础薄弱，可以观看此书，否则不需要
+- [《Koa 与 Node.js 开发实战》](https://book.douban.com/subject/30404722/)：如果 Web 开发基础薄弱，可以观看此书，否则不需要
 - [《深入浅出 Node.js》](https://book.douban.com/subject/25768396/)：Node 书籍的集大成者，虽然一部分内容已过时，但仍然值得精读
 - [《Node.js:来一打 C++扩展》](https://book.douban.com/subject/30247892/)：窥探 Node 底层的好书
 
@@ -147,7 +147,7 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 ### 优秀网站
 
 - [MSDN](https://developer.mozilla.org/zh-CN/)：每个前端开发者都应该收藏、关注、使用的网站，可以作为日常查询的工具。
-- [阮一峰JavaScript教程](https://javascript.ruanyifeng.com/)
+- [阮一峰 JavaScript 教程](https://javascript.ruanyifeng.com/)
 - [W3school](https://www.w3school.com.cn/index.html)：当年学习前端的重要网址
 
 ## 附
