@@ -40,9 +40,9 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 ## 资料
 
-> 没有被录入的一部分书籍也并不代表他们不优秀，只是很多内容与下列推荐书籍重复了，每个技术尽量精读 1-2 本
+> 被列入其他书籍的部分，并不是这些书籍不够优秀，而是因为其内容或年代久远、或已有更好的替代品。笔者推荐每个技术尽量精读 1-3 本即可。
 
-### 网页 CSS
+### 网页书籍 CSS
 
 笔者推荐直接阅读新时期的一些著作：
 
@@ -50,18 +50,33 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 - [《深入解析 CSS》](https://book.douban.com/subject/35021471/)：新近较好的 CSS 基础书籍
 - [《CSS 权威指南（第四版）》](https://book.douban.com/subject/33398314/)：经典 CSS 书籍
 - [《CSS 揭秘》](https://book.douban.com/subject/26745943/)：重点书籍，CSS 书籍瑰宝！！！
+- [《CSS 世界》](https://book.douban.com/subject/27615777/)：虽然该书语言风格有很大争议，但是不失为 CSS  领域的一本深入之作
+- [《CSS选择器世界》](https://book.douban.com/subject/34846688/)：《CSS 世界》作者的第二本书，虽然知识点很窄，但是实战经验丰富
 
-其他优秀书籍：《Head First HTML 与 CSS（第 2 版）》、《HTML5 与 CSS3 基础教程（第 8 版）》、《精通 CSS（第 3 版）》、《CSS 禅意花园》、《CSS 实战手册 第四版》、《CSS 世界》等。
+其他优秀书籍：
+
+```txt
+《Head First HTML 与 CSS（第 2 版）》
+《HTML5 与 CSS3 基础教程（第 8 版）》
+《精通 CSS（第 3 版）》
+《CSS 禅意花园》
+《CSS 实战手册 第四版》
+```
 
 ### JavaScript
 
 **语法基础**：
 
-- [《JavaScript 高级程序设计》第 3 版](https://book.douban.com/subject/10546125/)：外号红宝书，笔者认为是最好的 JS 入门书籍
-- [JavaScript 编程精解(第 3 版)](https://book.douban.com/subject/35011711/)：神作《Eloquent JavaScript》，开源地址：<http://eloquentjavascript.net/>
-- [《JavaScript 语言精髓与编程实践（第 3 版）》](https://book.douban.com/subject/35085910/)：国内出品的 JS 书籍大部头，与红宝书相似，但是对语法以及 ES6 深入理解有所涉及
+- [《JavaScript 编程精解(第 3 版)》](https://book.douban.com/subject/35011711/)：神作《Eloquent JavaScript》，开源地址：<http://eloquentjavascript.net/>，笔者认为该书是当下学习 JavaScript 的第一本书。
 - [《JavaScript 语言精粹》修订版](https://book.douban.com/subject/11874748/)：外号蝴蝶书，是 JS 核心语法的荟萃，短小精悍
-- [《JavaScript 权威指南》第 6 版](https://book.douban.com/subject/10549733/)：外号犀牛书，是一部 JS 的百科全书，过于庞大，有红宝书足矣
+- [《JavaScript 高级程序设计》第 3 版](https://book.douban.com/subject/10546125/)：外号红宝书，笔者认为是最好的 JS 入门书籍之一
+- [《JavaScript 语言精髓与编程实践（第 3 版）》](https://book.douban.com/subject/35085910/)：国内出品的 JS 书籍大部头，用深入浅出来形容不为过，推荐观看。
+
+其他：
+
+```txt
+《JavaScript 权威指南》第 6 版：    外号犀牛书，是一部 JS 的百科全书，过于庞大，有红宝书足矣，只适合作为工具书。
+```
 
 **DOM 编程**：
 
@@ -115,6 +130,7 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 ### Node 开发
 
 - [overnote 笔记](https://github.com/overnote/over-javascript/tree/master/06-Node%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9D%97)：入门书籍，笔者认为直接看本笔记即可
+- [《Koa与Node.js开发实战》](https://book.douban.com/subject/30404722/)：如果Web开发基础薄弱，可以观看此书，否则不需要
 - [《深入浅出 Node.js》](https://book.douban.com/subject/25768396/)：Node 书籍的集大成者，虽然一部分内容已过时，但仍然值得精读
 - [《Node.js:来一打 C++扩展》](https://book.douban.com/subject/30247892/)：窥探 Node 底层的好书
 
@@ -127,6 +143,12 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 - [《WebGL 编程指南》](https://book.douban.com/subject/25909351/)
 - [《Three.js 开发指南》](https://book.douban.com/subject/26349497/)
+
+### 优秀网站
+
+- [MSDN](https://developer.mozilla.org/zh-CN/)：每个前端开发者都应该收藏、关注、使用的网站，可以作为日常查询的工具。
+- [阮一峰JavaScript教程](https://javascript.ruanyifeng.com/)
+- [W3school](https://www.w3school.com.cn/index.html)：当年学习前端的重要网址
 
 ## 附
 
