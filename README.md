@@ -101,6 +101,7 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 - [《高效前端：Web 高效编程与优化实践》](https://book.douban.com/subject/30170670/)
 - [《高性能 JavaScript》](https://book.douban.com/subject/5362856/)
+- [《Web 性能权威指南》](https://book.douban.com/subject/25856314/)
 - [《了不起的 JavaScript 工程师：从前端到全端高级进阶》](https://book.douban.com/subject/34788884/)
 - [《Webpack 实战：入门、进阶与调优》](https://book.douban.com/subject/34430881/)
 - [《JavaScript 设计模式与开发实践》](https://book.douban.com/subject/26382780/)
@@ -109,6 +110,7 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 - [《JavaScript 模式》](https://book.douban.com/subject/11506062/)
 - [《JavaScript 函数式编程指北》](https://github.com/MostlyAdequate/mostly-adequate-guide)：[中文开源地址为](https://github.com/llh911001/mostly-adequate-guide-chinese)
 - [《编写可维护的 JavaScript》](https://book.douban.com/subject/21792530/)
+- [《重构》第 2 版](https://book.douban.com/subject/30468597/)
 
 ### Node 开发
 
