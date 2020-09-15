@@ -2,15 +2,16 @@
 
 ## 关于本笔记
 
-overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观看视频后整理出来的一套体系化的笔记，着重将一个整套知识体系由浅入深的记录下来，并做适当的横向扩展。
+OverNote 系列笔记是我在平时一些学习时间阅读书籍博客、观看视频后整理出来的一套体系化的笔记，着重将一个整套知识体系由浅入深的记录下来，并做适当的、持续的扩展。
 
-由于笔记刚刚开始整理，许多地方仍然没有体系化、详细化，笔误或者错误依然很多，敬请期待不断校正后的正式版。正式版会以类似 gitbook 的形式开放，便于阅读。
+由于笔记刚刚开始整理，许多地方仍然没有细化，笔误依然很多，敬请期待不断校正后的正式版。正式版会以类似 gitbook 的形式开放，便于阅读。
 
 为何是笔记形式，而不是独立博客形式？
 
 ```txt
-笔者引用并优化、扩展了很多优秀书籍内容。若不按目录主次写好，直接将这样的内容放在独立博客上，笔者认为是互联网的垃圾碎片
-独立博客的内容目录极度不清晰，久而久之只能成为一个自己也不会问津的垃圾收集器。如果在平时学习中，学到了某个知识点，比如深入了解了闭包的用法，可以把心得通过git版本控制记录到笔记目录中对应的闭包章节，便于查找，而不是去博客上再次发一篇闭包文章，最终石沉大海。这样坚持下来，笔记就能越来越由浅入深，变得丰富。
+因为我个人不是很喜欢在类似博客这样的平台上分享零碎的知识点，因为独立博客的内容目录极度不清晰，久而久之只能成为一个自己也不会问津的垃圾收集器。
+
+我觉得知识点应该是一套循序渐进的整体，方便我日后随时查阅！像 OverNote 这样主次目录划分好，以后看到了好的内容就可以基于 Git 在原来的基础上进行增删改，可以不断的优化！
 ```
 
 ## 新时代前端的学习方向要点
@@ -50,8 +51,6 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 - [《深入解析 CSS》](https://book.douban.com/subject/35021471/)：新近较好的 CSS 基础书籍
 - [《CSS 权威指南（第四版）》](https://book.douban.com/subject/33398314/)：经典 CSS 书籍
 - [《CSS 揭秘》](https://book.douban.com/subject/26745943/)：重点书籍，CSS 书籍瑰宝！！！
-- [《CSS 世界》](https://book.douban.com/subject/27615777/)：虽然该书语言风格有很大争议，但是不失为 CSS 领域的一本深入之作
-- [《CSS 选择器世界》](https://book.douban.com/subject/34846688/)：《CSS 世界》作者的第二本书，虽然知识点很窄，但是实战经验丰富
 
 其他优秀书籍：
 
@@ -61,15 +60,17 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 《精通 CSS（第 3 版）》
 《CSS 禅意花园》
 《CSS 实战手册 第四版》
+《CSS 选择器世界》
+《CSS 世界》
 ```
 
 ### JavaScript
 
 **语法基础**：
 
-- [《JavaScript 编程精解(第 3 版)》](https://book.douban.com/subject/35011711/)：神作《Eloquent JavaScript》，开源地址：<http://eloquentjavascript.net/>，笔者认为该书是当下学习 JavaScript 的第一本书。
+- [《JavaScript 编程精解(第 3 版)》](https://book.douban.com/subject/35011711/)：佳作《Eloquent JavaScript》，开源地址：<http://eloquentjavascript.net/>，笔者认为该书是当下学习 JavaScript 的第一本书。
 - [《JavaScript 语言精粹》修订版](https://book.douban.com/subject/11874748/)：外号蝴蝶书，是 JS 核心语法的荟萃，短小精悍
-- [《JavaScript 高级程序设计》第 3 版](https://book.douban.com/subject/10546125/)：外号红宝书，笔者认为是最好的 JS 入门书籍之一
+- [《JavaScript 高级程序设计》第 4 版](https://book.douban.com/subject/35175321/)：外号红宝书，笔者认为是最好的 JS 入门书籍之一，目前已到第 4 版
 - [《JavaScript 语言精髓与编程实践（第 3 版）》](https://book.douban.com/subject/35085910/)：国内出品的 JS 书籍大部头，用深入浅出来形容不为过，推荐观看。
 
 其他：
@@ -102,7 +103,12 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 - [《深入 React 技术栈》](https://book.douban.com/subject/26918038/)
 - [《深入浅出 React 和 Redux》](https://book.douban.com/subject/27033213/)
 - [《React 状态管理与同构实战》](https://book.douban.com/subject/30290509/)
-- [《基于 MVC 的 JavaScript Web 富应用开发》](https://book.douban.com/subject/10733304/)
+
+其他：
+
+```txt
+《基于 MVC 的 JavaScript Web 富应用开发》
+```
 
 **JavaScript 提升**：
 
@@ -111,23 +117,22 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 - [《你不知道 JavaScript》上卷+中卷](https://book.douban.com/subject/26351021/)：笔者认为目前最好的 JS 深入书籍之一
 - [《Effective JavaScript》](https://book.douban.com/subject/25786138/)
 - [《JavaScript 面向对象编程指南（第 2 版）》](https://book.douban.com/subject/26302623/)
+- [《JavaScript 函数式编程指北》](https://github.com/MostlyAdequate/mostly-adequate-guide)：[中文开源地址为](https://github.com/llh911001/mostly-adequate-guide-chinese)
 
 **综合提升**：
 
+- [《Webpack 实战：入门、进阶与调优》](https://book.douban.com/subject/34430881/)
+- [《现代前端技术解析》](https://book.douban.com/subject/27021790/)：前端技术与趋势总览
 - [《高效前端：Web 高效编程与优化实践》](https://book.douban.com/subject/30170670/)
 - [《高性能 JavaScript》](https://book.douban.com/subject/5362856/)
 - [《Web 性能权威指南》](https://book.douban.com/subject/25856314/)
 - [《了不起的 JavaScript 工程师：从前端到全端高级进阶》](https://book.douban.com/subject/34788884/)
-- [《Webpack 实战：入门、进阶与调优》](https://book.douban.com/subject/34430881/)
-- [《JavaScript 设计模式与开发实践》](https://book.douban.com/subject/26382780/)
-- [现代前端技术解析](https://book.douban.com/subject/27021790/)：前端技术与趋势总览
 - [《JavaScript 设计模式与开发实践》](https://book.douban.com/subject/26382780/)
 - [《JavaScript 模式》](https://book.douban.com/subject/11506062/)
-- [《JavaScript 函数式编程指北》](https://github.com/MostlyAdequate/mostly-adequate-guide)：[中文开源地址为](https://github.com/llh911001/mostly-adequate-guide-chinese)
 - [《编写可维护的 JavaScript》](https://book.douban.com/subject/21792530/)
 - [《重构》第 2 版](https://book.douban.com/subject/30468597/)
 
-### Node 开发
+### Node
 
 - [overnote 笔记](https://github.com/overnote/over-javascript/tree/master/06-Node%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9D%97)：入门书籍，笔者认为直接看本笔记即可
 - [《Koa 与 Node.js 开发实战》](https://book.douban.com/subject/30404722/)：如果 Web 开发基础薄弱，可以观看此书，否则不需要
@@ -143,12 +148,6 @@ overnote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 - [《WebGL 编程指南》](https://book.douban.com/subject/25909351/)
 - [《Three.js 开发指南》](https://book.douban.com/subject/26349497/)
-
-### 优秀网站
-
-- [MSDN](https://developer.mozilla.org/zh-CN/)：每个前端开发者都应该收藏、关注、使用的网站，可以作为日常查询的工具。
-- [阮一峰 JavaScript 教程](https://javascript.ruanyifeng.com/)
-- [W3school](https://www.w3school.com.cn/index.html)：当年学习前端的重要网址
 
 ## 附
 
