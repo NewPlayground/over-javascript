@@ -19,7 +19,7 @@ HTML 标准由 W3C 组织制定，经过多年发展，其标准已经到达了 
 
 ### 1.2 标准 HTML4 网页结构
 
-```txt
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -31,7 +31,7 @@ HTML 标准由 W3C 组织制定，经过多年发展，其标准已经到达了 
 
 ### 1.3 标准 HTML5 网页结构
 
-```txt
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,43 +55,44 @@ HTML 标准由 W3C 组织制定，经过多年发展，其标准已经到达了 
 
 图片标签 img 示例：
 
-```txt
+```html
 <img src="1.jpg" atl="我是图片" title="图片标题" width="200" height="300" />
 ```
 
 img 标签常用属性：
 
-- alt：当图片无法显示时显示 alt 内的文字
-- src：图片路径，可以是绝对路径（/开头）或者相对路径（./开头，可以省略./）
+```txt
+alt：当图片无法显示时显示 alt 内的文字
+src：图片路径，可以是绝对路径（/开头）或者相对路径（./开头，可以省略./）
+```
 
 ### 2.2 a 链接
 
 a 链接示例：
 
-```txt
+```html
 <a href="http://www.baidu.com/">百度</a>
 ```
 
 a 标签常用属性：
 
-- href：值为#时不能跳转，值为一个文件时则可以实现下载功能
-- title：鼠标划过时显示的文字
-- target：网页打开方式，常见打开方式有
-  - "\_self"：默认值，在当前页打开
-  - "\_blank"：在新窗口中打开
+```txt
+href：值为#时不能跳转，值为一个文件时则可以实现下载功能
+title：鼠标划过时显示的文字
+target：网页打开方式，常见打开方式有：_self：默认值，在当前页打开，_blank：在新窗口中打开
+```
 
 锚链接位置跳转演示：
 
-```txt
+```html
 <p id="test">你好</p>
 <a href="#test">查看问候语</a>
 ```
 
 a 链接特殊写法：可以制造点击不执行，一般在 tab 栏切换中使用
 
-```txt
-<a href="”javascript:;”"></a>
-<a href="”javascript:void(0);”"></a>
+```html
+<a href="”javascript:;”"></a> <a href="”javascript:void(0);”"></a>
 ```
 
 ### 2.3 特殊字符
@@ -109,7 +110,7 @@ Html 中的特殊字符需要使用转义字符书写：
 
 meta 标签用来设置字符集、关键字、描述、重定向等：
 
-```txt
+```html
 <meta charset="utf-8" />
 <meta name="keywords" content="流行资讯" />
 <meta name="description" content="最新服装设计流行信息" />
@@ -121,7 +122,7 @@ meta 标签用来设置字符集、关键字、描述、重定向等：
 
 link 标签必须放在 head 中，用来引入外部样式表和网页标题小图标：
 
-```txt
+```html
 <link rel="stylesheet" href="1.css" /> <link rel="icon" href="favicon.ico" />
 ```
 
@@ -129,35 +130,31 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 引入音乐文件：
 
-```txt
+```html
 <embed src="1.mp3" hidden="true"></embed>
 ```
 
 ### 2.7 滚动标签 marquee
 
-```txt
-<marquee
-  behavior="slide"
-  direction="up"
-  width="280"
-  height="300"
-  bgcolor="blue"
->
+```html
+<marquee behavior="slide" direction="up" width="280" height="300">
   <img src="1.jpg" />
 </marquee>
 ```
 
 中间的内容可以是文字、图片，也可以是由程序生成的文字、图片，behavior 可以设置滚动方式：
 
-- slide： 一端滚到另一端不会重复
-- scroll： 一端滚到另一端会重复
-- alternate： 两端之间来回滚动
-- direction： 设置滚动方向，值分别有 left、right、up、down
-- loop： 设置滚动次数，-1 为一直滚动下去
+```txt
+slide：     一端滚到另一端不会重复
+scroll：    一端滚到另一端会重复
+alternate： 两端之间来回滚动
+direction： 设置滚动方向，值分别有 left、right、up、down
+loop：      设置滚动次数，-1 为一直滚动下去
+```
 
 ### 2.8 注释
 
-```txt
+```html
 <!-- 这里书写注释 -->
 ```
 
@@ -165,7 +162,7 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 无序列表 ul：
 
-```txt
+```html
 <ul>
   新闻1
 </ul>
@@ -179,12 +176,14 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 无序列表，默认无任何显示样式，但是可以添加一些样式：
 
-- type="square"：列表样式为小方块
-- type="circle"：列表样式为小圆圈
+```txt
+type="square"：列表样式为小方块
+type="circle"：列表样式为小圆圈
+```
 
 有序列表 ol:
 
-```txt
+```html
 <ol type="a" start="3">
   <li>新闻1</li>
   <li>新闻2</li>
@@ -193,13 +192,15 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 有序列表的样式：
 
-- A,a：分别以 A 或者 a 字幕顺序排序
-- I,i ：分别以大小写罗马数字排列
-- start="3" ：li 前面的显示从第几个开始计数
+```txt
+A,a：       分别以 A 或者 a 字幕顺序排序
+I,i ：      分别以大小写罗马数字排列
+start="3" ：li 前面的显示从第几个开始计数
+```
 
 自定义列表 dl：
 
-```txt
+```html
 <dl>
   <dt>新闻汇总</dt>
   <dd>新闻1</dd>
@@ -224,35 +225,42 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 ### 4.1 table 组成
 
-```txt
-<table border="1" width="300" height="100" cellspacing="0" cellpadding="5" align="center" bgcolor="pink">
-    <tr>
-        <th>姓名</th>
-        <th>性别</th>
-    </tr>
-    <tr>
-        <td>111</td>
-        <td>122</td>
-    </tr>
-    <tr>
-        <td>211</td>
-        <td>222</td>
-    </tr>
+```html
+<table
+  border="1"
+  width="300"
+  height="100"
+  cellspacing="0"
+  cellpadding="5"
+  align="center"
+  bgcolor="pink"
+>
+  <tr>
+    <th>姓名</th>
+    <th>性别</th>
+  </tr>
+  <tr>
+    <td>111</td>
+    <td>122</td>
+  </tr>
+  <tr>
+    <td>211</td>
+    <td>222</td>
+  </tr>
 </table>
 ```
 
 表格结构:thead（表头）、tbody（主体）、tfoot（结尾）
 
-- cellspacing：用来设置单元格与单元格的距离（td），默认值为 2
-- cellpadding：设置内容距边框的距离（文字距离 td 左侧）
-- align：设置对齐方式，包括 left、right、center
-
-注意：
-
-- table 标签的标题标签是 caption，不能使用 title
-- td 内容垂直对齐使用 valign
-
 ```txt
+cellspacing：用来设置单元格与单元格的距离（td），默认值为 2
+cellpadding：设置内容距边框的距离（文字距离 td 左侧）
+align：设置对齐方式，包括 left、right、center
+```
+
+注意：table 标签的标题标签是 caption，不能使用 title。td 内容垂直对齐使用 valign。
+
+```html
 <!-- valign的其他值有 top middle bottom -->
 <td valign="bottom">123</td>
 ```
@@ -262,23 +270,23 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 - 横向合并 colspan：设置 td 的横向合并
 - 纵向合并 rowspan：设置 td 的纵向合并
 
-```txt
+```html
 <table width="300" height="200" cellspacing="0" border="1">
-    <tr>
-        <td colspan="2">111</td>
-        <td>122</td>
-        <td>133</td>
-    </tr>
-    <tr>
-        <td>211</td>
-        <td>222</td>
-        <td rowspan="2">233</td>
-    </tr>
-    <tr>
-        <td>311</td>
-        <td>322</td>
-        <td>333</td>
-    </tr>
+  <tr>
+    <td colspan="2">111</td>
+    <td>122</td>
+    <td>133</td>
+  </tr>
+  <tr>
+    <td>211</td>
+    <td>222</td>
+    <td rowspan="2">233</td>
+  </tr>
+  <tr>
+    <td>311</td>
+    <td>322</td>
+    <td>333</td>
+  </tr>
 </table>
 ```
 
@@ -288,9 +296,9 @@ link 标签必须放在 head 中，用来引入外部样式表和网页标题小
 
 表单用来收集信息，构成包含：表单域（form 标签）与表单控件（input 等），form 标签即代表包裹了一个表单域：
 
-```txt
-<form action="" method="">  <!--  action:用来处理表单数据 method:表单提交得方式 -->
-</form>
+```html
+<!--  action:用来处理表单数据 method:表单提交得方式 -->
+<form action="" method=""></form>
 ```
 
 ### 5.2 表单控件
@@ -364,6 +372,7 @@ input 标签的 type 可以指定控件的类型为文本、密码、单选框�
 
 表单元素的描述文字应该使用 label 标签包裹，并且使用 for 属性指向表单元素，从而达到点击描述文字可以聚焦文本框的效果：(注意下列的 username 是 id)
 
-```txt
+```html
+<!-- action:用来处理表单数据 method:表单提交得方式 -->
 <label for="username">用户名</label> <input type="text" id="username" />
 ```
