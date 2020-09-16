@@ -47,9 +47,10 @@ OverNote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 笔者推荐直接阅读新时期的一些著作：
 
-- [《HTML & CSS 设计与构建网站》](https://book.douban.com/subject/21338365/)：HTML 与 CSS 基础入门
-- [《深入解析 CSS》](https://book.douban.com/subject/35021471/)：新近较好的 CSS 基础书籍
+- [《HTML & CSS 设计与构建网站》](https://book.douban.com/subject/21338365/)：HTML 与 CSS 零基础入门
+- [《精通 CSS 第 3 版）》](https://book.douban.com/subject/30450258/)：CSS 全面了解
 - [《CSS 权威指南（第四版）》](https://book.douban.com/subject/33398314/)：经典 CSS 书籍
+- [《深入解析 CSS》](https://book.douban.com/subject/35021471/)：新近较好的 CSS 基础与进阶书籍
 - [《CSS 揭秘》](https://book.douban.com/subject/26745943/)：重点书籍，CSS 书籍瑰宝！！！
 
 其他优秀书籍：
@@ -57,7 +58,7 @@ OverNote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 ```txt
 《Head First HTML 与 CSS（第 2 版）》
 《HTML5 与 CSS3 基础教程（第 8 版）》
-《精通 CSS（第 3 版）》
+《CSS设计指南》
 《CSS 禅意花园》
 《CSS 实战手册 第四版》
 《CSS 选择器世界》
