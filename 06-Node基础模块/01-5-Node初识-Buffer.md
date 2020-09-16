@@ -24,7 +24,8 @@ const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(10, 1);
 
 // 创建一个长度为 10、且未初始化的 Buffer
-// 这个方法比调用 Buffer.alloc() 更快，但返回的 Buffer 实例可能包含旧数据，因此需要使用 fill()、write() 或其他能填充 Buffer 的内容的函数进行重写。
+// 这个方法比调用 Buffer.alloc() 更快，但返回的 Buffer 实例可能包含旧数据。可以理解为 这段字节内存被直接使用了，原来的数据还保留着
+// 解决办法：使用 fill()、write() 或其他能填充 Buffer 的内容的函数进行重写。
 const buf3 = Buffer.allocUnsafe(10);
 
 // 创建一个包含字节 [1, 2, 3] 的 Buffer。
@@ -77,7 +78,7 @@ Buffer 与 字符串之间的转换：
 
 ```js
 // 字符串转 Buffer
-var buf = Buffer.from('test','utf-8');
+let buf = Buffer.from('test','utf-8');
 
 // Buffer 转换为字符串
 buf.toString([encoding], [start], [end]);
@@ -108,10 +109,10 @@ Buffer.isEncoding(encodibg);        // 返回 true、false
 在 Buffer 使用场景中，通常是以一段一段的方式传输，常见从输入流中读取内容的示例如下：
 
 ```js
-var fs = require('fs');
+let fs = require('fs');
 
-var rs = fs.createReadStream('./demo.md');
-var data = '';
+let rs = fs.createReadStream('./demo.md');
+let data = '';
 
 rs.on("data", function(chunk) {
     data += chunk;
@@ -131,9 +132,9 @@ data = data.toString() + chunk.toString();
 下面模拟宽字节文字读取场景：
 
 ```js
-var fs = require('fs');
+let fs = require('fs');
 
-var buf = Buffer.from("白银之手骑士团");
+let buf = Buffer.from("白银之手骑士团");
 
 // <Buffer e7 99 bd e9 93 b6 e4 b9 8b e6 89 8b e9 aa 91 e5 a3 ab e5 9b a2 ef bc 81>
 console.log("buf:", buf);
@@ -142,8 +143,8 @@ console.log("start:", buf.toString("UTF-8", 0, 3));             // 白  e7 99 bd
 console.log("start:", buf.toString("UTF-8", 3, 6));             // 银  e9 93 b6
 console.log("start:", buf.toString("UTF-8", 6, 9));             // 之  e4 b9 8b，e6 89 8b，e9 aa 91，e5 a3 ab，e5 9b a2，ef bc 81
 
-var data = "";
-var rs = fs.createReadStream("./demo.txt", {highWaterMark: 4});
+let data = "";
+let rs = fs.createReadStream("./demo.txt", {highWaterMark: 4});
 rs.on("data", function(chunk) {
     data += chunk;
 });
@@ -159,7 +160,7 @@ rs.on("end", function(){
 流式读取可以设置编码：
 
 ```js
-var rs = fs.createReadStream("./demo.txt", {highWaterMark: 4});
+let rs = fs.createReadStream("./demo.txt", {highWaterMark: 4});
 rs.setEncoding('utf8');
 ```
 
@@ -170,14 +171,14 @@ setEncding 只能解决 UTF-8，Base64 等带来的编码问题，没有从根�
 ```js
 fs.createReadStream("./test.txt",{highWaterMark: 10});
 
-var dataArr = [];
+let dataArr = [];
 
 rs.on("data", function(chunk){
     dataArr.push(chunk);
 });
 
 rs.on("end", function(){
-    var buf = Buffer.concat(dataArr);
+    let buf = Buffer.concat(dataArr);
     console.log(buf.toString());
 });
 ```
@@ -198,16 +199,16 @@ Buffer.concat = function(list, length) {
 
     if (typeof length !== 'number') {
         length = 0;
-        for (var i = 0; i < list.length; i++) {
-            var buf = list[i];
+        for (let i = 0; i < list.length; i++) {
+            let buf = list[i];
             length += buf.length;
         }
     }
 
-    var buffer = new Buffer(length);
-    var pos = 0;
-    for (var i = 0; i < list.length; i++) {
-        var buf = list[i];
+    let buffer = new Buffer(length);
+    let pos = 0;
+    for (let i = 0; i < list.length; i++) {
+        let buf = list[i];
         buf.copy(buffer, pos);
         pos += buf.length;
     }
