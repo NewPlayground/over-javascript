@@ -56,7 +56,6 @@ OverNote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 其他优秀书籍：
 
 ```txt
-《Head First HTML 与 CSS（第 2 版）》
 《HTML5 与 CSS3 基础教程（第 8 版）》
 《CSS设计指南》
 《CSS 禅意花园》
@@ -69,16 +68,16 @@ OverNote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 **语法基础**：
 
-- [《Head First JavaScript程序设计》](https://book.douban.com/subject/27120520/)：适合零基础学习使用
 - [《JavaScript 高级程序设计》第 4 版](https://book.douban.com/subject/35175321/)：外号红宝书，笔者认为是最好的 JS 入门书籍之一，目前已到第 4 版
 - [《JavaScript 语言精髓与编程实践（第 3 版）》](https://book.douban.com/subject/35085910/)：国内出品的 JS 书籍大部头，用深入浅出来形容不为过，推荐观看。
 
 其他：
 
 ```txt
-《JavaScript 编程精解(第 3 版)：佳作《Eloquent JavaScript》，开源地址：http://eloquentjavascript.net/，但是该书定位为基础学习，但是很多内容与叙述风格不适合零基础学习，且翻译上并不十分优秀
-《JavaScript 权威指南》第 6 版：    外号犀牛书，是一部 JS 的百科全书，过于庞大，有红宝书足矣，只适合作为工具书。
-《JavaScript 语言精粹》修订版：外号蝴蝶书，是 JS 核心语法的荟萃，短小精悍。该书的优秀的部分是对 JavaScript 糟粕部分的总结，但是这些问题大多在 ES6 中得到的解决，在学习 ES6 时候就会自然明白
+《JavaScript 编程精解(第 3 版)：佳作《Eloquent JavaScript》，整体偏基础，但是部分内容不适合基础学习，且翻译上并不十分优秀
+《JavaScript 权威指南》第 6 版：犀牛书，JS 的百科全书，过于庞大，适合作为工具书。
+《JavaScript 语言精粹》修订版：蝴蝶书，是 JS 核心语法的荟萃，短小精悍。
+《Head First JavaScript程序设计》：适合完全零基础者学习
 ```
 
 **DOM 编程**：
