@@ -56,7 +56,6 @@ OverNote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 其他优秀书籍：
 
 ```txt
-《Head First HTML 与 CSS（第 2 版）》
 《HTML5 与 CSS3 基础教程（第 8 版）》
 《CSS设计指南》
 《CSS 禅意花园》
@@ -71,7 +70,7 @@ OverNote 系列笔记是我在平时一些学习时间阅读书籍博客、观�
 
 - [《JavaScript 编程精解(第 3 版)》](https://book.douban.com/subject/35011711/)：佳作《Eloquent JavaScript》，开源地址：<http://eloquentjavascript.net/>，笔者认为该书是当下学习 JavaScript 的第一本书。
 - [《JavaScript 语言精粹》修订版](https://book.douban.com/subject/11874748/)：外号蝴蝶书，是 JS 核心语法的荟萃，短小精悍
-- [《JavaScript 高级程序设计》第 4 版](https://book.douban.com/subject/35175321/)：外号红宝书，笔者认为是最好的 JS 入门书籍之一，目前已到第 4 版
+- [《JavaScript 高级程序设计》第 4 版](https://book.douban.com/subject/35175321/)：外号红宝书，笔者认为是最好的 JS 入门书籍之一
 - [《JavaScript 语言精髓与编程实践（第 3 版）》](https://book.douban.com/subject/35085910/)：国内出品的 JS 书籍大部头，用深入浅出来形容不为过，推荐观看。
 
 其他：
